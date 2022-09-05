@@ -15,8 +15,14 @@ function DisableMouse() {
   const clicks = useRef(0);
   useEffect(() => {
     clicks.current = 0;
-    console.log(view.camera);
-    view.camera.setPhysicalScale(2);
+    console.log(view.camera.getParallelScale());
+    console.log(view.interactor);
+    view.interactor.onLeftButtonPress(() => {
+      // because of VTK.js, when we set a listener for widgets, we have to manually pass
+      // right clicks up to the parent
+      view.camera.setParallelScale(130);
+      console.log(view.camera);
+    });
   }, []);
   return null;
 }
@@ -25,6 +31,8 @@ function Example() {
   const { uploadedFile } = useStateContext();
   const { iSlice, jSlice, kSlice, colorWindow, colorLevel, colorPreset } =
     useStateContext();
+
+  const view = useContext(Contexts.ViewContext);
 
   return (
     <div
@@ -58,7 +66,7 @@ function Example() {
             id="0"
             cameraPosition={[0, 0, 1]}
             cameraViewUp={[0, 1, 0]}
-            cameraParallelProjection={false}
+            cameraParallelProjection={true}
             background={[0, 0, 0]}
           >
             <ShareDataSet>
@@ -74,6 +82,7 @@ function Example() {
               colorMapPreset={colorPreset}
             >
               <ShareDataSet />
+
               <DisableMouse />
             </SliceRepresentation>
           </View>
@@ -82,7 +91,7 @@ function Example() {
             id="1"
             cameraPosition={[360, 0, 0]}
             cameraViewUp={[0, 0, -1]}
-            cameraParallelProjection={false}
+            cameraParallelProjection={true}
             background={[0, 0, 0]}
           >
             <ShareDataSet>
@@ -106,7 +115,7 @@ function Example() {
             id="2"
             cameraPosition={[0, -180, 0]}
             cameraViewUp={[0, 0, -1]}
-            cameraParallelProjection={false}
+            cameraParallelProjection={true}
             background={[0, 0, 0]}
           >
             <ShareDataSet>
