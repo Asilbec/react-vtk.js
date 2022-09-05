@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+body{
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+h1,h2,h3,h4,h5,p{
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.layout{
+  width: 100%;
   min-height: 100vh;
+  background: black;
+
+  display: flex;
+  justify-content: 'center';
+}
+
+.FileInputContainer{
+  width: 100%;
+  max-width: 1300px;
+  height: 100vh;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  flex-direction: row;
+}
+
+.FileInputContainerMax{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  height: 100%;
+  max-height: 600px;
+  gap: 10px;
+}
+
+.FileInputContainerMax button{
+  background: linear-gradient(1.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+  border: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  transition: 0.3s ease-in-out;
+}
+
+.FileInputContainerMax button h1{
+  font-size: 50px;
+  margin-top: 60px;
+  margin-left: 20px;
+  font-weight: bold;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.FileInputContainerMax button h3{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+  text-align: left;
+  font-weight: 400;
+  color: rgb(192, 192, 192);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+
+
+
+
+
+
+
+
+

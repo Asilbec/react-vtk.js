@@ -1,0 +1,17 @@
+.MenuBarContainer{
+    width: 100%;
+    height: 100%;
+    max-width: 350px;
+    background-color: #27272b;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.MenuBarContainerScroll{
+    width: 100%;
+    margin-top: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
