@@ -15,13 +15,11 @@ function DisableMouse() {
   const clicks = useRef(0);
   useEffect(() => {
     clicks.current = 0;
-    console.log(view.camera.getParallelScale());
-    console.log(view.interactor);
     view.interactor.onLeftButtonPress(() => {
       // because of VTK.js, when we set a listener for widgets, we have to manually pass
       // right clicks up to the parent
-      view.camera.setParallelScale(130);
-      console.log(view.camera);
+      console.log(view.camera.getParallelScale());
+      console.log(view.openglRenderWindow.getSize());
     });
   }, []);
   return null;
@@ -31,8 +29,6 @@ function Example() {
   const { uploadedFile } = useStateContext();
   const { iSlice, jSlice, kSlice, colorWindow, colorLevel, colorPreset } =
     useStateContext();
-
-  const view = useContext(Contexts.ViewContext);
 
   return (
     <div
