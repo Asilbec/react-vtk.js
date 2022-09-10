@@ -8,27 +8,42 @@ import {
   SliceRepresentation,
   Reader,
   Contexts,
+  VolumeController,
+  VolumeRepresentation,
 } from "react-vtk-js";
 
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
   const clicks = useRef(0);
+  view.interactor.setInteractorStyle(null);
+
   useEffect(() => {
     clicks.current = 0;
     view.interactor.onLeftButtonPress(() => {
       // because of VTK.js, when we set a listener for widgets, we have to manually pass
       // right clicks up to the parent
-      console.log(view.camera.getParallelScale());
-      console.log(view.openglRenderWindow.getSize());
+      console.log(view.props.className);
+      view.camera.setParallelScale(140);
     });
-  }, []);
+  }, [view]);
   return null;
 }
 
 function Example() {
   const { uploadedFile } = useStateContext();
-  const { iSlice, jSlice, kSlice, colorWindow, colorLevel, colorPreset } =
-    useStateContext();
+  const {
+    iSlice,
+    jSlice,
+    kSlice,
+    colorWindow,
+    colorLevel,
+    colorPreset,
+    singleView,
+    viewOne,
+    viewTwo,
+    viewThree,
+    viewFour,
+  } = useStateContext();
 
   return (
     <div
@@ -36,7 +51,7 @@ function Example() {
         width: "100vw",
         height: "100vh",
         position: "absolute",
-        background: "#27272b",
+        background: "white",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -53,82 +68,107 @@ function Example() {
           style={{
             width: "100%",
             height: "100%",
-            display: "grid",
+            display: singleView ? "flex" : "grid",
             gridTemplateColumns: "auto auto",
             gap: "10px",
           }}
         >
-          <View
-            id="0"
-            cameraPosition={[0, 0, 1]}
-            cameraViewUp={[0, 1, 0]}
-            cameraParallelProjection={true}
-            background={[0, 0, 0]}
-          >
-            <ShareDataSet>
-              <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
-            </ShareDataSet>
-
-            <SliceRepresentation
-              kSlice={kSlice}
-              property={{
-                colorWindow,
-                colorLevel,
-              }}
-              colorMapPreset={colorPreset}
+          {viewOne && (
+            <View
+              id="0"
+              cameraPosition={[0, 0, 1]}
+              cameraViewUp={[0, 1, 0]}
+              cameraParallelProjection={true}
+              background={[0, 0, 0]}
+              className="one"
             >
-              <ShareDataSet />
+              <ShareDataSet>
+                <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
+              </ShareDataSet>
 
-              <DisableMouse />
-            </SliceRepresentation>
-          </View>
+              <SliceRepresentation
+                kSlice={kSlice}
+                property={{
+                  colorWindow,
+                  colorLevel,
+                }}
+                colorMapPreset={colorPreset}
+              >
+                <ShareDataSet />
 
-          <View
-            id="1"
-            cameraPosition={[360, 0, 0]}
-            cameraViewUp={[0, 0, -1]}
-            cameraParallelProjection={true}
-            background={[0, 0, 0]}
-          >
-            <ShareDataSet>
-              <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
-            </ShareDataSet>
+                <DisableMouse />
+              </SliceRepresentation>
+            </View>
+          )}
 
-            <SliceRepresentation
-              iSlice={iSlice}
-              property={{
-                colorWindow,
-                colorLevel,
-              }}
-              colorMapPreset={colorPreset}
+          {viewTwo && (
+            <View
+              id="1"
+              cameraPosition={[360, 0, 0]}
+              cameraViewUp={[0, 0, -1]}
+              cameraParallelProjection={true}
+              background={[0, 0, 0]}
+              className="two"
             >
-              <ShareDataSet />
-              <DisableMouse />
-            </SliceRepresentation>
-          </View>
+              <ShareDataSet>
+                <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
+              </ShareDataSet>
 
-          <View
-            id="2"
-            cameraPosition={[0, -180, 0]}
-            cameraViewUp={[0, 0, -1]}
-            cameraParallelProjection={true}
-            background={[0, 0, 0]}
-          >
-            <ShareDataSet>
-              <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
-            </ShareDataSet>
-            <SliceRepresentation
-              jSlice={jSlice}
-              property={{
-                colorWindow,
-                colorLevel,
-              }}
-              colorMapPreset={colorPreset}
+              <SliceRepresentation
+                iSlice={iSlice}
+                property={{
+                  colorWindow,
+                  colorLevel,
+                }}
+                colorMapPreset={colorPreset}
+              >
+                <ShareDataSet />
+                <DisableMouse />
+              </SliceRepresentation>
+            </View>
+          )}
+
+          {viewThree && (
+            <View
+              id="2"
+              cameraPosition={[0, -180, 0]}
+              cameraViewUp={[0, 0, -1]}
+              cameraParallelProjection={true}
+              background={[0, 0, 0]}
+              className="three"
             >
-              <ShareDataSet />
-              <DisableMouse />
-            </SliceRepresentation>
-          </View>
+              <ShareDataSet>
+                <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
+              </ShareDataSet>
+              <SliceRepresentation
+                jSlice={jSlice}
+                property={{
+                  colorWindow,
+                  colorLevel,
+                }}
+                colorMapPreset={colorPreset}
+              >
+                <ShareDataSet />
+                <DisableMouse />
+              </SliceRepresentation>
+            </View>
+          )}
+
+          {viewFour && (
+            <View
+              id="0"
+              background={[0, 0, 0]}
+              cameraPosition={[1, 0, 0]}
+              cameraViewUp={[0, 0, -1]}
+              cameraParallelProjection={false}
+              className="four"
+            >
+              <VolumeRepresentation>
+                <VolumeController />
+                <ShareDataSet />
+              </VolumeRepresentation>
+            </View>
+          )}
         </div>
       </div>
     </div>

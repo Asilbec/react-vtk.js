@@ -10,7 +10,39 @@ export const StateContext = ({ children }) => {
   const [screen, setScreen] = useState(true);
   const [menu, setMenu] = useState(true);
   const [uploadedFile, setUploadedFile] = useState();
-  const [colorPreset, setColorPresets] = useState("jet");
+  const [colorPreset, setColorPresets] = useState("Grayscale");
+  const [singleView, setSingleView] = useState(false);
+
+  const [viewOne, setViewerOne] = useState(false);
+  const [viewTwo, setViewTwo] = useState(false);
+  const [viewThree, setViewThree] = useState(false);
+  const [viewFour, setViewFour] = useState(false);
+
+  const updateCloseUp = (name) => {
+    if (name === "one") {
+      closeCloseUp();
+      setViewerOne(true);
+    }
+    if (name === "two") {
+      closeCloseUp();
+      setViewTwo(true);
+    }
+    if (name === "three") {
+      closeCloseUp();
+      setViewThree(true);
+    }
+    if (name === "four") {
+      closeCloseUp();
+      setViewFour(true);
+    }
+  };
+
+  const closeCloseUp = () => {
+    setViewerOne(false);
+    setViewTwo(false);
+    setViewThree(false);
+    setViewFour(false);
+  };
 
   const updateUploadedFile = () => {
     const file = document.getElementById("customFiledInput").files[0];
@@ -60,6 +92,11 @@ export const StateContext = ({ children }) => {
     setColorPresets(colorName);
   };
 
+  const updateSingleView = () => {
+    if (singleView) setSingleView(false);
+    else setSingleView(true);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -72,6 +109,11 @@ export const StateContext = ({ children }) => {
         menu,
         uploadedFile,
         colorPreset,
+        singleView,
+        viewOne,
+        viewTwo,
+        viewThree,
+        viewFour,
         updateMenu,
         updateiSlice,
         updatejSlice,
@@ -81,6 +123,9 @@ export const StateContext = ({ children }) => {
         updateScreen,
         updateUploadedFile,
         updateColorPresets,
+        updateSingleView,
+        closeCloseUp,
+        updateCloseUp,
       }}
     >
       {children}
