@@ -22,7 +22,6 @@ function ControlBar() {
     viewThree,
     viewFour,
     updateCloseUp,
-    updateSingleView,
   } = useStateContext();
 
   return (
@@ -77,7 +76,6 @@ function ControlBar() {
         >
           <Button
             onClick={() => {
-              updateSingleView();
               updateCloseUp("one");
             }}
             variant={viewOne ? "contained" : "outlined"}
@@ -87,7 +85,6 @@ function ControlBar() {
 
           <Button
             onClick={() => {
-              updateSingleView();
               updateCloseUp("two");
             }}
             variant={viewTwo ? "contained" : "outlined"}
@@ -97,7 +94,6 @@ function ControlBar() {
 
           <Button
             onClick={() => {
-              updateSingleView();
               updateCloseUp("three");
             }}
             variant={viewThree ? "contained" : "outlined"}
@@ -107,8 +103,6 @@ function ControlBar() {
 
           <Button
             onClick={() => {
-              updateSingleView();
-
               updateCloseUp("four");
             }}
             variant={viewFour ? "contained" : "outlined"}

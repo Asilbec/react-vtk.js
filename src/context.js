@@ -12,36 +12,30 @@ export const StateContext = ({ children }) => {
   const [uploadedFile, setUploadedFile] = useState();
   const [colorPreset, setColorPresets] = useState("Grayscale");
   const [singleView, setSingleView] = useState(false);
-
-  const [viewOne, setViewerOne] = useState(false);
-  const [viewTwo, setViewTwo] = useState(false);
-  const [viewThree, setViewThree] = useState(false);
-  const [viewFour, setViewFour] = useState(false);
+  const [viewOne, setViewerOne] = useState(true);
+  const [viewTwo, setViewTwo] = useState(true);
+  const [viewThree, setViewThree] = useState(true);
+  const [viewFour, setViewFour] = useState(true);
 
   const updateCloseUp = (name) => {
     if (name === "one") {
-      closeCloseUp();
-      setViewerOne(true);
+      if (viewOne) setViewerOne(false);
+      else setViewerOne(true);
     }
     if (name === "two") {
-      closeCloseUp();
-      setViewTwo(true);
+      if (viewTwo) setViewTwo(false);
+      else setViewTwo(true);
     }
-    if (name === "three") {
-      closeCloseUp();
-      setViewThree(true);
-    }
-    if (name === "four") {
-      closeCloseUp();
-      setViewFour(true);
-    }
-  };
 
-  const closeCloseUp = () => {
-    setViewerOne(false);
-    setViewTwo(false);
-    setViewThree(false);
-    setViewFour(false);
+    if (name === "three") {
+      if (viewThree) setViewThree(false);
+      else setViewThree(true);
+    }
+
+    if (name === "four") {
+      if (viewFour) setViewFour(false);
+      else setViewFour(true);
+    }
   };
 
   const updateUploadedFile = () => {
@@ -124,7 +118,6 @@ export const StateContext = ({ children }) => {
         updateUploadedFile,
         updateColorPresets,
         updateSingleView,
-        closeCloseUp,
         updateCloseUp,
       }}
     >

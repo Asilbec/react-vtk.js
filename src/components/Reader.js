@@ -15,16 +15,11 @@ import {
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
   const clicks = useRef(0);
-  view.interactor.setInteractorStyle(null);
+  console.log(view);
 
   useEffect(() => {
     clicks.current = 0;
-    view.interactor.onLeftButtonPress(() => {
-      // because of VTK.js, when we set a listener for widgets, we have to manually pass
-      // right clicks up to the parent
-      console.log(view.props.className);
-      view.camera.setParallelScale(140);
-    });
+    view.defaultStyle.setRotationFactor(0);
   }, [view]);
   return null;
 }
@@ -68,12 +63,12 @@ function Example() {
           style={{
             width: "100%",
             height: "100%",
-            display: singleView ? "flex" : "grid",
-            gridTemplateColumns: "auto auto",
+            display: "grid",
             gap: "10px",
+            gridTemplateColumns: singleView ? " auto" : "auto auto",
           }}
         >
-          {viewOne && (
+          <div style={{ display: viewOne ? "flex" : "none" }}>
             <View
               id="0"
               cameraPosition={[0, 0, 1]}
@@ -99,9 +94,9 @@ function Example() {
                 <DisableMouse />
               </SliceRepresentation>
             </View>
-          )}
+          </div>
 
-          {viewTwo && (
+          <div style={{ display: viewTwo ? "flex" : "none" }}>
             <View
               id="1"
               cameraPosition={[360, 0, 0]}
@@ -126,9 +121,9 @@ function Example() {
                 <DisableMouse />
               </SliceRepresentation>
             </View>
-          )}
+          </div>
 
-          {viewThree && (
+          <div style={{ display: viewThree ? "flex" : "none" }}>
             <View
               id="2"
               cameraPosition={[0, -180, 0]}
@@ -152,9 +147,9 @@ function Example() {
                 <DisableMouse />
               </SliceRepresentation>
             </View>
-          )}
+          </div>
 
-          {viewFour && (
+          <div style={{ display: viewFour ? "flex" : "none" }}>
             <View
               id="0"
               background={[0, 0, 0]}
@@ -168,7 +163,7 @@ function Example() {
                 <ShareDataSet />
               </VolumeRepresentation>
             </View>
-          )}
+          </div>
         </div>
       </div>
     </div>
