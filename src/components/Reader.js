@@ -15,8 +15,6 @@ import {
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
   const clicks = useRef(0);
-  console.log(view);
-
   useEffect(() => {
     clicks.current = 0;
     view.defaultStyle.setRotationFactor(0);
@@ -67,6 +65,7 @@ function Example() {
             gap: "10px",
             gridTemplateColumns: singleView ? " auto" : "auto auto",
           }}
+          id="DivContainerForViews"
         >
           <div style={{ display: viewOne ? "flex" : "none" }}>
             <View

@@ -27,37 +27,45 @@ function ControlBar() {
   return (
     <div className="MenuBarContainer">
       <div className="MenuBarContainerScroll">
-        <Slider
-          defaultValue={47}
-          max={93}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updatekSlice(e.target.value)}
-        />
+        {viewOne && (
+          <Slider
+            defaultValue={47}
+            max={93}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            onChange={(e) => updatekSlice(e.target.value)}
+          />
+        )}
 
-        <Slider
-          defaultValue={128}
-          max={256}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updateiSlice(e.target.value)}
-        />
+        {viewTwo && (
+          <Slider
+            defaultValue={128}
+            max={256}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            onChange={(e) => updateiSlice(e.target.value)}
+          />
+        )}
 
-        <Slider
-          defaultValue={128}
-          max={256}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updatejSlice(e.target.value)}
-        />
+        {viewThree && (
+          <Slider
+            defaultValue={128}
+            max={256}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            onChange={(e) => updatejSlice(e.target.value)}
+          />
+        )}
 
-        <Slider
-          defaultValue={1000}
-          max={4095}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updateColorLevel(e.target.value)}
-        />
+        {(viewOne || viewTwo || viewThree) && (
+          <Slider
+            defaultValue={2095}
+            max={4095}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            onChange={(e) => updateColorLevel(e.target.value)}
+          />
+        )}
 
         <Slider
           defaultValue={2095}

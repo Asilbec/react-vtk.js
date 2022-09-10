@@ -19,23 +19,62 @@ export const StateContext = ({ children }) => {
 
   const updateCloseUp = (name) => {
     if (name === "one") {
-      if (viewOne) setViewerOne(false);
-      else setViewerOne(true);
+      if (viewOne) {
+        if (viewOne + viewTwo + viewThree + viewFour === 2) {
+          setSingleView(true);
+        }
+        setViewerOne(false);
+      } else {
+        if (viewOne + viewTwo + viewThree + viewFour === 0) setSingleView(true);
+        else setSingleView(false);
+        setViewerOne(true);
+      }
     }
     if (name === "two") {
-      if (viewTwo) setViewTwo(false);
-      else setViewTwo(true);
+      if (viewTwo) {
+        if (viewOne + viewTwo + viewThree + viewFour === 2) {
+          setSingleView(true);
+        }
+        setViewTwo(false);
+      } else {
+        if (viewOne + viewTwo + viewThree + viewFour === 0) setSingleView(true);
+        else setSingleView(false);
+        setViewTwo(true);
+      }
     }
 
     if (name === "three") {
-      if (viewThree) setViewThree(false);
-      else setViewThree(true);
+      if (viewThree) {
+        if (viewOne + viewTwo + viewThree + viewFour === 2) {
+          setSingleView(true);
+        }
+        setViewThree(false);
+      } else {
+        if (viewOne + viewTwo + viewThree + viewFour === 0) setSingleView(true);
+        else setSingleView(false);
+        setViewThree(true);
+      }
     }
 
     if (name === "four") {
-      if (viewFour) setViewFour(false);
-      else setViewFour(true);
+      if (viewFour) {
+        if (viewOne + viewTwo + viewThree + viewFour === 2) {
+          setSingleView(true);
+        }
+        setViewFour(false);
+      } else {
+        if (viewOne + viewTwo + viewThree + viewFour === 0) setSingleView(true);
+        else setSingleView(false);
+        setViewFour(true);
+      }
     }
+  };
+
+  const getValueOfBoolean = () => {
+    // console.log([viewOne, viewTwo, viewThree, viewFour].filter(Boolean).length);
+    // const length  = ([viewOne, viewTwo, viewThree, viewFour].filter(Boolean).length)
+    // if(length )
+    // console.log(viewOne, viewTwo, viewThree, viewFour);
   };
 
   const updateUploadedFile = () => {
@@ -119,6 +158,7 @@ export const StateContext = ({ children }) => {
         updateColorPresets,
         updateSingleView,
         updateCloseUp,
+        getValueOfBoolean,
       }}
     >
       {children}
