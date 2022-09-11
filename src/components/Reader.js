@@ -44,12 +44,11 @@ function Example() {
         width: "100vw",
         height: "100vh",
         position: "absolute",
-        background: "white",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         boxSizing: "border-box",
-        padding: "20px",
+        padding: "10px",
       }}
     >
       <ShareDataSet>
@@ -62,7 +61,7 @@ function Example() {
             width: "100%",
             height: "100%",
             display: "grid",
-            gap: "10px",
+            gap: "5px",
             gridTemplateColumns: singleView ? " auto" : "auto auto",
           }}
           id="DivContainerForViews"
