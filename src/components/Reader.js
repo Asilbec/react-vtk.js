@@ -1,6 +1,6 @@
 import { React, useRef, useContext, useEffect } from "react";
-// import vtkColorMaps from "@kitware/vtk.js/Rendering/Core/ColorTransferFunction/ColorMaps.js";
 import { useStateContext } from "../context";
+import ViewIndicator from "./Viewindicator";
 import ControlBar from "./ControlBar";
 import {
   View,
@@ -87,8 +87,8 @@ function Example() {
                 }}
                 colorMapPreset={colorPreset}
               >
+                <ViewIndicator number={"K"} />
                 <ShareDataSet />
-
                 <DisableMouse />
               </SliceRepresentation>
             </View>
@@ -115,6 +115,7 @@ function Example() {
                 }}
                 colorMapPreset={colorPreset}
               >
+                <ViewIndicator number={"I"} />
                 <ShareDataSet />
                 <DisableMouse />
               </SliceRepresentation>
@@ -141,6 +142,8 @@ function Example() {
                 }}
                 colorMapPreset={colorPreset}
               >
+                <ViewIndicator number={"J"} />
+
                 <ShareDataSet />
                 <DisableMouse />
               </SliceRepresentation>
@@ -157,6 +160,7 @@ function Example() {
               className="four"
             >
               <VolumeRepresentation>
+                <ViewIndicator number={"Volume"} />
                 <VolumeController />
                 <ShareDataSet />
               </VolumeRepresentation>

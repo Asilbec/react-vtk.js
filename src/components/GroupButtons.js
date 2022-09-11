@@ -11,7 +11,7 @@ function GroupButton() {
       style={{
         display: "grid",
         gridTemplateColumns: "auto auto",
-        gap: "10px",
+        gap: "5px",
       }}
     >
       <Button

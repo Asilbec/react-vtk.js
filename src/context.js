@@ -16,6 +16,7 @@ export const StateContext = ({ children }) => {
   const [viewTwo, setViewTwo] = useState(true);
   const [viewThree, setViewThree] = useState(true);
   const [viewFour, setViewFour] = useState(true);
+  const [Viewindicator, setViewindicators] = useState(false);
 
   const updateCloseUp = (name) => {
     if (name === "one") {
@@ -68,13 +69,6 @@ export const StateContext = ({ children }) => {
         setViewFour(true);
       }
     }
-  };
-
-  const getValueOfBoolean = () => {
-    // console.log([viewOne, viewTwo, viewThree, viewFour].filter(Boolean).length);
-    // const length  = ([viewOne, viewTwo, viewThree, viewFour].filter(Boolean).length)
-    // if(length )
-    // console.log(viewOne, viewTwo, viewThree, viewFour);
   };
 
   const updateUploadedFile = () => {
@@ -130,6 +124,10 @@ export const StateContext = ({ children }) => {
     else setSingleView(true);
   };
 
+  const updateViewindicator = () => {
+    if (Viewindicator) setViewindicators(false);
+    else setViewindicators(true);
+  };
   return (
     <Context.Provider
       value={{
@@ -158,7 +156,7 @@ export const StateContext = ({ children }) => {
         updateColorPresets,
         updateSingleView,
         updateCloseUp,
-        getValueOfBoolean,
+        updateViewindicator,
       }}
     >
       {children}
