@@ -20,7 +20,7 @@ function Sliders() {
     <AccordionDetails>
       {viewOne && (
         <Box>
-          <Typography fontSize={20} color="white">
+          <Typography fontSize={15} color="white">
             Slice K
           </Typography>
           <Slider
@@ -36,7 +36,7 @@ function Sliders() {
 
       {viewTwo && (
         <Box>
-          <Typography fontSize={20} color="white">
+          <Typography fontSize={15} color="white">
             Slice K
           </Typography>{" "}
           <Slider
@@ -52,7 +52,7 @@ function Sliders() {
 
       {viewThree && (
         <Box>
-          <Typography fontSize={20} color="white">
+          <Typography fontSize={15} color="white">
             Slice K
           </Typography>{" "}
           <Slider
@@ -68,7 +68,7 @@ function Sliders() {
 
       {(viewOne || viewTwo || viewThree) && (
         <Box>
-          <Typography fontSize={20} color="white">
+          <Typography fontSize={15} color="white">
             Color Level
           </Typography>
           <Slider
@@ -84,7 +84,7 @@ function Sliders() {
 
       {(viewOne || viewTwo || viewThree) && (
         <Box>
-          <Typography fontSize={20} color="white">
+          <Typography fontSize={15} color="white">
             Color Window
           </Typography>
           <Slider

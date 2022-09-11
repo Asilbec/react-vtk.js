@@ -7,11 +7,12 @@ function ViewIndicator(props) {
         position: "absolute",
         zIndex: 500,
         background: "transparent",
-        width: "30px",
-        bottom: 0,
+        bottom: 5,
+        left: 5,
         color: "white",
         textAlign: "center",
         fontWeight: 100,
+        userSelect: "none",
       }}
     >
       {props.number}

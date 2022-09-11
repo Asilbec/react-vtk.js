@@ -18,7 +18,7 @@ function ControlBar() {
           <Accordion style={{ background: "#252526" }}>
             <AccordionSummary
               style={{ color: "white" }}
-              expandIcon={<ExpandMoreIcon />}
+              expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
             >
               <Typography>Slice Controls</Typography>
             </AccordionSummary>

@@ -22,7 +22,7 @@ function DisableMouse() {
   return null;
 }
 
-function Example() {
+function Viewer() {
   const { uploadedFile } = useStateContext();
   const {
     iSlice,
@@ -172,4 +172,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default Viewer;
