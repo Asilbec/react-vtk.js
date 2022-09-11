@@ -12,6 +12,8 @@ function ControlBar() {
   return (
     <div className="MenuBarContainer">
       <div className="MenuBarContainerScroll">
+        <GroupButton />
+
         {(viewOne || viewTwo || viewThree) && (
           <Accordion style={{ background: "#252526" }}>
             <AccordionSummary
@@ -23,7 +25,6 @@ function ControlBar() {
             <Sliders />
           </Accordion>
         )}
-        <GroupButton />
       </div>
     </div>
   );
