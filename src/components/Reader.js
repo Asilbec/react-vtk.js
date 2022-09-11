@@ -23,11 +23,13 @@ function DisableMouse() {
 }
 
 function Viewer() {
-  const { uploadedFile } = useStateContext();
   const {
     iSlice,
     jSlice,
     kSlice,
+    updateiSlice,
+    updatejSlice,
+    updatekSlice,
     colorWindow,
     colorLevel,
     colorPreset,
@@ -36,7 +38,18 @@ function Viewer() {
     viewTwo,
     viewThree,
     viewFour,
+    uploadedFile,
   } = useStateContext();
+
+  useEffect(() => {
+    // used to make sure the views render upon loading
+    updateiSlice(iSlice + 1);
+    updatejSlice(jSlice + 1);
+    updatekSlice(kSlice + 1);
+
+    //done to prevent missing depencay error
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
