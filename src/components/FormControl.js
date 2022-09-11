@@ -8,7 +8,7 @@ function FormControls() {
   return (
     <Box>
       <Typography
-        style={{ color: "white", fontSize: 20, marginBottom: "10px" }}
+        style={{ color: "white", fontSize: 15, marginBottom: "10px" }}
       >
         Color Presets
       </Typography>

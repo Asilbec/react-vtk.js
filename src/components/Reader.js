@@ -15,6 +15,7 @@ import {
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
   const clicks = useRef(0);
+  // console.log(view);
   useEffect(() => {
     clicks.current = 0;
     view.defaultStyle.setRotationFactor(0);
@@ -42,12 +43,14 @@ function Viewer() {
   } = useStateContext();
 
   useEffect(() => {
+    setTimeout(() => {
+      updateiSlice(129);
+      updatejSlice(129);
+      updatekSlice(47);
+    }, 3000);
     // used to make sure the views render upon loading
-    updateiSlice(iSlice + 1);
-    updatejSlice(jSlice + 1);
-    updatekSlice(kSlice + 1);
-
     //done to prevent missing depencay error
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -61,7 +64,8 @@ function Viewer() {
         justifyContent: "center",
         alignItems: "center",
         boxSizing: "border-box",
-        padding: "10px",
+        padding: "5px",
+        paddingLeft: "0px",
       }}
     >
       <ShareDataSet>
@@ -174,7 +178,9 @@ function Viewer() {
             >
               <VolumeRepresentation>
                 <ViewIndicator number={"Volume"} />
-                <VolumeController />
+                <div>
+                  <VolumeController />
+                </div>
                 <ShareDataSet />
               </VolumeRepresentation>
             </View>

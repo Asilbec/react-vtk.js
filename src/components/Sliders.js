@@ -27,7 +27,7 @@ function Sliders() {
             defaultValue={47}
             max={93}
             aria-label="Default"
-            valueLabelDisplay="false"
+            valueLabelDisplay="off"
             size="small"
             onChange={(e) => updatekSlice(e.target.value)}
           />
@@ -37,14 +37,14 @@ function Sliders() {
       {viewTwo && (
         <Box>
           <Typography fontSize={15} color="white">
-            Slice K
+            Slice I
           </Typography>{" "}
           <Slider
             defaultValue={128}
             max={256}
             aria-label="Default"
             size="small"
-            valueLabelDisplay="false"
+            valueLabelDisplay="off"
             onChange={(e) => updateiSlice(e.target.value)}
           />
         </Box>
@@ -53,14 +53,14 @@ function Sliders() {
       {viewThree && (
         <Box>
           <Typography fontSize={15} color="white">
-            Slice K
-          </Typography>{" "}
+            Slice J
+          </Typography>
           <Slider
             defaultValue={128}
             max={256}
             aria-label="Default"
             size="small"
-            valueLabelDisplay="false"
+            valueLabelDisplay="off"
             onChange={(e) => updatejSlice(e.target.value)}
           />
         </Box>

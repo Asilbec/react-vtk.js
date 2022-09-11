@@ -17,6 +17,7 @@ export const StateContext = ({ children }) => {
   const [viewThree, setViewThree] = useState(true);
   const [viewFour, setViewFour] = useState(true);
   const [Viewindicator, setViewindicators] = useState(false);
+  const [cameraOne, setCameraOne] = useState([0, 0, 1]);
 
   const updateCloseUp = (name) => {
     if (name === "one") {
@@ -145,6 +146,7 @@ export const StateContext = ({ children }) => {
         viewTwo,
         viewThree,
         viewFour,
+        cameraOne,
         updateMenu,
         updateiSlice,
         updatejSlice,
