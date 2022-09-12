@@ -14,15 +14,15 @@ Here is a working live demo :  https://iharsh234.github.io/WebApp/
 
 
 ## To-do
-- Add BSE (India) Symbol to the current App.
-- Decide comparison models of Stocks. (suggestions are most welcome).
-- Another WebApp, capable of comparing at least 10 stocks.
+- Add overlapping volumes to each other
+- convert .nii to .vti using python simplt itk library
+- Add Model
 
 ## Team
 
-[![Bek](https://avatars.githubusercontent.com/u/40507855?v=4 || width=100 )](https://github.com/Asilbec)  | [![Quandl.com](https://github.com/iharsh234/WebApp/blob/master/images/quandl.jpg)](https://www.quandl.com/)
+<img src = 'https://avatars.githubusercontent.com/u/40507855?v=4' width =200>  | <img src = 'https://avatars.githubusercontent.com/u/111029337?v=4' width =200>
 ---|---
-[Bek](https://github.com/Asilbec) |[Quandl](https://www.quandl.com)
+[Bek](https://github.com/Asilbec) |[Derek](https://github.com/raphael2G)
 
 ## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md)
 
