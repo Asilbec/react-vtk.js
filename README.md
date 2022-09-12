@@ -20,7 +20,7 @@ Here is a working live demo :  https://iharsh234.github.io/WebApp/
 
 ## Team
 
-[![Bek](https://avatars.githubusercontent.com/u/40507855?v=4)](https://github.com/Asilbec)  | [![Quandl.com](https://github.com/iharsh234/WebApp/blob/master/images/quandl.jpg)](https://www.quandl.com/)
+[![Bek](https://avatars.githubusercontent.com/u/40507855?v=4 || width=100 )](https://github.com/Asilbec)  | [![Quandl.com](https://github.com/iharsh234/WebApp/blob/master/images/quandl.jpg)](https://www.quandl.com/)
 ---|---
 [Bek](https://github.com/Asilbec) |[Quandl](https://www.quandl.com)
 
