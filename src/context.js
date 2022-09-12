@@ -11,13 +11,12 @@ export const StateContext = ({ children }) => {
   const [menu, setMenu] = useState(true);
   const [uploadedFile, setUploadedFile] = useState();
   const [colorPreset, setColorPresets] = useState("Grayscale");
-  const [singleView, setSingleView] = useState(false);
-  const [viewOne, setViewerOne] = useState(true);
-  const [viewTwo, setViewTwo] = useState(true);
-  const [viewThree, setViewThree] = useState(true);
+  const [singleView, setSingleView] = useState(true);
+  const [viewOne, setViewerOne] = useState(false);
+  const [viewTwo, setViewTwo] = useState(false);
+  const [viewThree, setViewThree] = useState(false);
   const [viewFour, setViewFour] = useState(true);
   const [Viewindicator, setViewindicators] = useState(false);
-  const [cameraOne, setCameraOne] = useState([0, 0, 1]);
 
   const updateCloseUp = (name) => {
     if (name === "one") {
@@ -146,7 +145,6 @@ export const StateContext = ({ children }) => {
         viewTwo,
         viewThree,
         viewFour,
-        cameraOne,
         updateMenu,
         updateiSlice,
         updatejSlice,

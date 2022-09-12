@@ -12,6 +12,8 @@ function GroupButton() {
         display: "grid",
         gridTemplateColumns: "auto auto",
         gap: "5px",
+        boxSizing: "border-box",
+        padding: "5px",
       }}
     >
       <Button

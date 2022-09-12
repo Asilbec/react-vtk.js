@@ -11,15 +11,15 @@ h1,h2,h3,h4,h5,p{
 .layout{
   width: 100%;
   min-height: 100vh;
-  background: #1a1919;
+  background: #252526;
 
   display: flex;
   justify-content: 'center';
 }
-
+      
 .FileInputContainer{
   width: 100%;
-  max-width: 1300px;
+  max-width: 800px;
   height: 100vh;
   margin: auto;
   box-sizing: border-box;
@@ -33,12 +33,12 @@ h1,h2,h3,h4,h5,p{
   flex-direction: row;
   margin: auto;
   height: 100%;
-  max-height: 600px;
+  max-height: 400px;
   gap: 10px;
 }
 
 .FileInputContainerMax button{
-  background: linear-gradient(1.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+  background: rgb(24 118 210);
   border: none;
   display: flex;
   flex-direction: column;
@@ -46,20 +46,20 @@ h1,h2,h3,h4,h5,p{
 }
 
 .FileInputContainerMax button h1{
-  font-size: 50px;
-  margin-top: 60px;
-  margin-left: 20px;
+  font-size: 60px;
   font-weight: bold;
+  margin: auto;
+  margin-bottom: 0;
   color: white;
 }
 
 .FileInputContainerMax button h3{
-  font-size: 20px;
+  font-size: 15px;
+  margin: auto;
   margin-top: 10px;
-  margin-left: 20px;
-  text-align: left;
+  text-align: center;
   font-weight: 400;
-  color: rgb(192, 192, 192);
+  color: rgb(240, 240, 240);
 }
 
 
