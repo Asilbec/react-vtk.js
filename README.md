@@ -1,4 +1,4 @@
-# ![WebApp](https://github.com/Asilbec/react-vtk.js/blob/main/public/logo192.png)
+# ![WebApp](https://github.com/Asilbec/react-vtk.js/blob/main/public/Screen%20Shot%202022-09-11%20at%2011.59.49%20PM.png)
 # WebApp
 <table>
 <tr>
