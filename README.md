@@ -26,5 +26,5 @@ Here is a working live demo :  https://vti-viewer.netlify.app/
 
 ## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md)
 
-MIT © [Harsh Vijay ](https://github.com/iharsh234)
+MIT © [Bek](https://github.com/Asilbec)
 
