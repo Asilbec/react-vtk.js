@@ -183,6 +183,13 @@ function Viewer() {
                 </div>
                 <ShareDataSet />
               </VolumeRepresentation>
+              <VolumeRepresentation>
+                <ViewIndicator number={"Volume"} />
+                <div style={{ position: "absolute", bottom: 300 }}>
+                  <VolumeController />
+                </div>
+                <ShareDataSet />
+              </VolumeRepresentation>
             </View>
           </div>
         </div>
