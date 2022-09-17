@@ -3,20 +3,21 @@
 <table>
 <tr>
 <td>
-  Multidimensional visualization of medical ct scans to create a deep learning based paradigm for private, zero-footprint medical diagnosis. Acheived by using React.js and VTK.js 
+  Multidimensional visualization of medical ct scans to create a deep learning based paradigm for private, zero-footprint medical diagnosis. Acheived by using tensorflow.js, React.js and VTK.js 
 </td>
 </tr>
 </table>
 
 
 ## Demo
-Here is a working live demo :  https://vti-viewer.netlify.app/
+Live Demo: https://vti-viewer.netlify.app/
 
 
 ## To-do
-- Add overlapping volumes to each other
-- convert .nii to .vti using python simplt itk library
-- Add Model
+- Add support for overlapping volumes 
+- Add functionality for .̶n̶i̶i̶, .nii.gz, and dicom files
+- Integrate deep learning model to identify COVID-19 in loaded volumes
+- Extract 2D image slices from volumetric models
 
 ## Team
 
