@@ -6,7 +6,7 @@ import SimpleITK as sitk
 from vtk import vtkStructuredPointsReader
 from vtk import vtkXMLImageDataWriter
 
-niiImageFileName = 'image.nii'
+niiImageFileName = '1103_3.nii'
 vtpImageFileName = 'image.vtk'
 vtiImageFileName = 'image.vti'
 
