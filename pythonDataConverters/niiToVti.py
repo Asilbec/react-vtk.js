@@ -1,35 +1,54 @@
-import sys
-
-# import paraview.vtk.io as vtk_io
+import os
 import SimpleITK as sitk
 
 from vtk import vtkStructuredPointsReader
 from vtk import vtkXMLImageDataWriter
 
-niiImageFileName = '1103_3.nii'
-vtpImageFileName = 'image.vtk'
-vtiImageFileName = 'image.vti'
+base_path = 'pythonDataConverters'
 
-#convert .nii to .vtp
+niiImageFileName = 'pigImage.nii'
+vtkImageFileName = niiImageFileName[:-4]+'.vtk'
+vtiImageFileName = niiImageFileName[:-4]+'.vti'
+
+
+niiImageFilePath = os.path.join(base_path, niiImageFileName)
+
+try: 
+    vtkImageFilePath = open(os.path.join(base_path, vtkImageFileName), 'x')
+except:
+    print(vtkImageFileName + ' already exists. Rewriting current file.')
+    vtkImageFilePath = open(os.path.join(base_path, vtkImageFileName), 'w')
+
+try: 
+    vtiImageFilePath = open(os.path.join(base_path, vtiImageFileName), 'x')
+except:
+    print(vtiImageFileName + ' already exists. Rewriting current file.')
+    vtiImageFilePath = open(os.path.join(base_path, vtiImageFileName), 'w')
+
+
+
+
+
+#convert .nii to .vtk
 
 niiReader = sitk.ImageFileReader()
 niiReader.SetImageIO("NiftiImageIO")
-niiReader.SetFileName(niiImageFileName)
+niiReader.SetFileName(niiImageFilePath)
 niiImage = niiReader.Execute()
 
-vtpWriter = sitk.ImageFileWriter()
-vtpWriter.SetFileName(vtpImageFileName)
-vtpWriter.Execute(niiImage)
+vtkWriter = sitk.ImageFileWriter()
+vtkWriter.SetFileName(vtkImageFileName)
+vtkWriter.Execute(niiImage)
 
 print('--------- .nii converted to .vtk ---------')
 
-#convert .vtp to .vtk
+#convert .vtk to .vti
 
-vtpReader = vtkStructuredPointsReader()
-vtpReader.SetFileName(vtpImageFileName)
+vtkReader = vtkStructuredPointsReader()
+vtkReader.SetFileName(vtkImageFileName)
 
 vtiWriter = vtkXMLImageDataWriter()
-vtiWriter.SetInputConnection(vtpReader.GetOutputPort())
+vtiWriter.SetInputConnection(vtkReader.GetOutputPort())
 
 vtiWriter.SetFileName(vtiImageFileName)
 vtiWriter.Write()
