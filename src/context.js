@@ -17,6 +17,12 @@ export const StateContext = ({ children }) => {
   const [viewThree, setViewThree] = useState(false);
   const [viewFour, setViewFour] = useState(true);
   const [Viewindicator, setViewindicators] = useState(false);
+  const [volumeControllerDiv, setVolumeController] = useState(false);
+
+  const updateVolumeController = () => {
+    if (volumeControllerDiv) setVolumeController(false);
+    else setVolumeController(true);
+  };
 
   const updateCloseUp = (name) => {
     if (name === "one") {
@@ -145,6 +151,7 @@ export const StateContext = ({ children }) => {
         viewTwo,
         viewThree,
         viewFour,
+        volumeControllerDiv,
         updateMenu,
         updateiSlice,
         updatejSlice,
@@ -157,6 +164,7 @@ export const StateContext = ({ children }) => {
         updateSingleView,
         updateCloseUp,
         updateViewindicator,
+        updateVolumeController,
       }}
     >
       {children}

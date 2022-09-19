@@ -40,6 +40,7 @@ function Viewer() {
     viewThree,
     viewFour,
     uploadedFile,
+    volumeControllerDiv,
   } = useStateContext();
 
   useEffect(() => {
@@ -178,14 +179,22 @@ function Viewer() {
             >
               <VolumeRepresentation>
                 <ViewIndicator number={"Volume"} />
-                <div>
+                <div
+                  style={{
+                    display: volumeControllerDiv ? "none" : "flex",
+                  }}
+                >
                   <VolumeController />
                 </div>
                 <ShareDataSet />
               </VolumeRepresentation>
               <VolumeRepresentation>
                 <ViewIndicator number={"Volume"} />
-                <div style={{ position: "absolute", bottom: 300 }}>
+                <div
+                  style={{
+                    display: volumeControllerDiv ? "flex" : "none",
+                  }}
+                >
                   <VolumeController />
                 </div>
                 <ShareDataSet />
