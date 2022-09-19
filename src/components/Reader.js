@@ -15,9 +15,13 @@ import {
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
   const clicks = useRef(0);
-  // console.log(view);
   useEffect(() => {
     clicks.current = 0;
+    view.interactor.onRightButtonPress(() => {
+      view.renderWindow.captureImages()[0].then((image) => {
+        console.log(image);
+      });
+    });
     view.defaultStyle.setRotationFactor(0);
   }, [view]);
   return null;
