@@ -18,49 +18,54 @@ function Sliders() {
 
   return (
     <AccordionDetails>
-      {viewOne && (
+      {!viewOne && (
         <Box>
           <Typography fontSize={15} color="white">
             Slice K
           </Typography>
           <Slider
-            defaultValue={47}
-            max={93}
+            defaultValue={50}
+            max={260}
             aria-label="Default"
-            valueLabelDisplay="off"
+            valueLabelDisplay="auto"
             size="small"
-            onChange={(e) => updatekSlice(e.target.value)}
+            onChange={(e) => {
+              console.log(e.target.value);
+              updatekSlice(e.target.value);
+            }}
           />
         </Box>
       )}
 
-      {viewTwo && (
+      {!viewTwo && (
         <Box>
           <Typography fontSize={15} color="white">
             Slice I
-          </Typography>{" "}
+          </Typography>
           <Slider
-            defaultValue={128}
-            max={256}
+            defaultValue={0}
+            max={260}
+            min={-2}
             aria-label="Default"
             size="small"
-            valueLabelDisplay="off"
+            valueLabelDisplay="auto"
             onChange={(e) => updateiSlice(e.target.value)}
           />
         </Box>
       )}
 
-      {viewThree && (
+      {!viewThree && (
         <Box>
           <Typography fontSize={15} color="white">
             Slice J
           </Typography>
           <Slider
-            defaultValue={128}
-            max={256}
+            defaultValue={50}
+            max={260}
+            min={0}
             aria-label="Default"
             size="small"
-            valueLabelDisplay="off"
+            valueLabelDisplay="auto"
             onChange={(e) => updatejSlice(e.target.value)}
           />
         </Box>

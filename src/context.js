@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState } from "react";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-  const [iSlice, setISlice] = useState(128);
-  const [jSlice, setJSlice] = useState(128);
-  const [kSlice, setKSlice] = useState(47);
+  const [iSlice, setISlice] = useState(50);
+  const [jSlice, setJSlice] = useState(50);
+  const [kSlice, setKSlice] = useState(50);
   const [colorWindow, setColorWindow] = useState(2095);
   const [colorLevel, setColorLevel] = useState(1000);
   const [screen, setScreen] = useState(true);

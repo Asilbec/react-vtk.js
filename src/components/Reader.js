@@ -18,12 +18,27 @@ function DisableMouse() {
   useEffect(() => {
     clicks.current = 0;
     view.interactor.onRightButtonPress(() => {
-      view.renderWindow.captureImages()[0].then((image) => {
-        console.log(image);
-      });
+      // view.renderWindow.captureImages()[0].then((image) => {
+      //   console.log(image);
+      // });
+      // console.log(view.renderer.getSize());
+      // console.log(view.axesActor.getActors()[0].getXRange());
     });
     view.defaultStyle.setRotationFactor(0);
   }, [view]);
+  return null;
+}
+
+function GetSliceSize() {
+  const views = useContext(Contexts.ViewContext);
+  const view = useContext(Contexts.DownstreamContext);
+  const clicks = useRef(0);
+  useEffect(() => {
+    clicks.current = 0;
+    views.interactor.onRightButtonPress(() => {
+      console.log(view.getBounds());
+    });
+  }, [views]);
   return null;
 }
 
@@ -175,12 +190,22 @@ function Viewer() {
           <div style={{ display: viewFour ? "flex" : "none" }}>
             <View
               id="0"
-              background={[0, 0, 0]}
+              background={[255, 255, 255]}
               cameraPosition={[1, 0, 0]}
               cameraViewUp={[0, 0, -1]}
               cameraParallelProjection={false}
               className="four"
             >
+              <SliceRepresentation iSlice={iSlice}>
+                <ShareDataSet />
+              </SliceRepresentation>
+              <SliceRepresentation kSlice={kSlice}>
+                <ShareDataSet />
+              </SliceRepresentation>
+              <SliceRepresentation jSlice={jSlice}>
+                <ShareDataSet />
+              </SliceRepresentation>
+
               <VolumeRepresentation>
                 <ViewIndicator number={"Volume"} />
                 <div
@@ -202,6 +227,7 @@ function Viewer() {
                   <VolumeController />
                 </div>
                 <ShareDataSet />
+                <GetSliceSize />
               </VolumeRepresentation>
             </View>
           </div>
