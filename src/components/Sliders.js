@@ -14,6 +14,7 @@ function Sliders() {
     updatejSlice,
     updateColorLevel,
     updateColorWindow,
+    slideMax,
   } = useStateContext();
 
   return (
@@ -25,7 +26,8 @@ function Sliders() {
           </Typography>
           <Slider
             defaultValue={50}
-            max={260}
+            max={slideMax[2]}
+            min={-2}
             aria-label="Default"
             valueLabelDisplay="auto"
             size="small"

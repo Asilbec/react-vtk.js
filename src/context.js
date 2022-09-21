@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState } from "react";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-  const [iSlice, setISlice] = useState(50);
-  const [jSlice, setJSlice] = useState(50);
-  const [kSlice, setKSlice] = useState(50);
+  const [iSlice, setISlice] = useState(0);
+  const [jSlice, setJSlice] = useState(0);
+  const [kSlice, setKSlice] = useState(0);
   const [colorWindow, setColorWindow] = useState(2095);
   const [colorLevel, setColorLevel] = useState(1000);
   const [screen, setScreen] = useState(true);
@@ -18,10 +18,16 @@ export const StateContext = ({ children }) => {
   const [viewFour, setViewFour] = useState(true);
   const [Viewindicator, setViewindicators] = useState(false);
   const [volumeControllerDiv, setVolumeController] = useState(false);
+  const [slideMax, setSlideMax] = useState([0, 0, 0]);
 
   const updateVolumeController = () => {
     if (volumeControllerDiv) setVolumeController(false);
     else setVolumeController(true);
+  };
+
+  const updateSlideMax = (list) => {
+    setSlideMax(list);
+    console.log(list);
   };
 
   const updateCloseUp = (name) => {
@@ -152,6 +158,7 @@ export const StateContext = ({ children }) => {
         viewThree,
         viewFour,
         volumeControllerDiv,
+        slideMax,
         updateMenu,
         updateiSlice,
         updatejSlice,
@@ -165,6 +172,7 @@ export const StateContext = ({ children }) => {
         updateCloseUp,
         updateViewindicator,
         updateVolumeController,
+        updateSlideMax,
       }}
     >
       {children}

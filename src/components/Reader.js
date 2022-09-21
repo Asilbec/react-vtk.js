@@ -29,27 +29,11 @@ function DisableMouse() {
   return null;
 }
 
-function GetSliceSize() {
-  const views = useContext(Contexts.ViewContext);
-  const view = useContext(Contexts.DownstreamContext);
-  const clicks = useRef(0);
-  useEffect(() => {
-    clicks.current = 0;
-    views.interactor.onRightButtonPress(() => {
-      console.log(view.getBounds());
-    });
-  }, [views]);
-  return null;
-}
-
 function Viewer() {
   const {
     iSlice,
     jSlice,
     kSlice,
-    updateiSlice,
-    updatejSlice,
-    updatekSlice,
     colorWindow,
     colorLevel,
     colorPreset,
@@ -61,13 +45,18 @@ function Viewer() {
     uploadedFile,
     volumeControllerDiv,
   } = useStateContext();
+  const count = useRef();
+  const count2 = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      updateiSlice(129);
-      updatejSlice(129);
-      updatekSlice(47);
-    }, 3000);
+    // setTimeout(() => {
+    //   updateiSlice(0);
+    //   updatejSlice(0);
+    //   updatekSlice(0);
+    // }, 3000);
+
+    console.log(count.current);
+
     // used to make sure the views render upon loading
     //done to prevent missing depencay error
 
@@ -196,19 +185,10 @@ function Viewer() {
               cameraParallelProjection={false}
               className="four"
             >
-              <SliceRepresentation iSlice={iSlice}>
-                <ShareDataSet />
-              </SliceRepresentation>
-              <SliceRepresentation kSlice={kSlice}>
-                <ShareDataSet />
-              </SliceRepresentation>
-              <SliceRepresentation jSlice={jSlice}>
-                <ShareDataSet />
-              </SliceRepresentation>
-
               <VolumeRepresentation>
                 <ViewIndicator number={"Volume"} />
                 <div
+                  ref={count}
                   style={{
                     display: volumeControllerDiv ? "none" : "flex",
                   }}
@@ -220,6 +200,7 @@ function Viewer() {
               <VolumeRepresentation>
                 <ViewIndicator number={"Volume"} />
                 <div
+                  ref={count2}
                   style={{
                     display: volumeControllerDiv ? "flex" : "none",
                   }}
@@ -227,7 +208,6 @@ function Viewer() {
                   <VolumeController />
                 </div>
                 <ShareDataSet />
-                <GetSliceSize />
               </VolumeRepresentation>
             </View>
           </div>
