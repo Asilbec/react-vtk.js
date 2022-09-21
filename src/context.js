@@ -19,6 +19,12 @@ export const StateContext = ({ children }) => {
   const [Viewindicator, setViewindicators] = useState(false);
   const [volumeControllerDiv, setVolumeController] = useState(false);
   const [slideMax, setSlideMax] = useState([0, 0, 0]);
+  const [loaded, setLoaded] = useState(true);
+
+  const updateLoaded = () => {
+    if (loaded) setLoaded(false);
+    else setLoaded(true);
+  };
 
   const updateVolumeController = () => {
     if (volumeControllerDiv) setVolumeController(false);
@@ -84,6 +90,7 @@ export const StateContext = ({ children }) => {
   };
 
   const updateUploadedFile = () => {
+    setLoaded(false);
     const file = document.getElementById("customFiledInput").files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -91,7 +98,6 @@ export const StateContext = ({ children }) => {
       setUploadedFile(reader.result);
       setMenu(false);
     };
-
     reader.onerror = function () {
       console.log(reader.error);
     };
@@ -159,6 +165,7 @@ export const StateContext = ({ children }) => {
         viewFour,
         volumeControllerDiv,
         slideMax,
+        loaded,
         updateMenu,
         updateiSlice,
         updatejSlice,
@@ -173,6 +180,7 @@ export const StateContext = ({ children }) => {
         updateViewindicator,
         updateVolumeController,
         updateSlideMax,
+        updateLoaded,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { React, useRef, useContext, useEffect } from "react";
+import { React, useRef, useContext, useEffect, useCallback } from "react";
 import { useStateContext } from "../context";
 import ViewIndicator from "./Viewindicator";
 import ControlBar from "./ControlBar";
@@ -44,6 +44,7 @@ function Viewer() {
     viewFour,
     uploadedFile,
     volumeControllerDiv,
+    updateLoaded,
   } = useStateContext();
   const count = useRef();
   const count2 = useRef();
@@ -54,12 +55,16 @@ function Viewer() {
     //   updatejSlice(0);
     //   updatekSlice(0);
     // }, 3000);
-
-    console.log(count.current);
-
+    const interval = setInterval(() => {
+      if (count2.current.validData) {
+        clearInterval(interval);
+        updateLoaded();
+      } else {
+        console.log("not loaded yet");
+      }
+    }, 3000);
     // used to make sure the views render upon loading
     //done to prevent missing depencay error
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -197,10 +202,9 @@ function Viewer() {
                 </div>
                 <ShareDataSet />
               </VolumeRepresentation>
-              <VolumeRepresentation>
+              <VolumeRepresentation ref={count2}>
                 <ViewIndicator number={"Volume"} />
                 <div
-                  ref={count2}
                   style={{
                     display: volumeControllerDiv ? "flex" : "none",
                   }}
