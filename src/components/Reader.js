@@ -34,6 +34,7 @@ function DisableView() {
   const { modelOne } = useStateContext();
   useEffect(() => {
     view.renderView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modelOne]);
   return null;
 }
@@ -43,6 +44,7 @@ function DisableViewTwo() {
   const { modelTwo } = useStateContext();
   useEffect(() => {
     view.renderView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modelTwo]);
   return null;
 }
@@ -65,6 +67,7 @@ function Viewer() {
     updateLoaded,
     modelRef,
     modelTwoRef,
+    updateSlideMax,
   } = useStateContext();
 
   useEffect(() => {
@@ -77,12 +80,15 @@ function Viewer() {
       if (modelRef.current.validData) {
         clearInterval(interval);
         updateLoaded();
+        console.log(modelRef.current);
+        updateSlideMax(modelRef.current.volume.get().bounds);
       } else {
         console.log("not loaded yet");
       }
     }, 3000);
     // used to make sure the views render upon loading
     //done to prevent missing depencay error
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -13,8 +13,6 @@ function GroupButton() {
     updateModelTwo,
     modelOne,
     modelTwo,
-    modelRef,
-    modelTwoRef,
   } = useStateContext();
 
   return (
@@ -64,6 +62,7 @@ function GroupButton() {
           updateModelOne();
         }}
         variant={modelOne ? "contained" : "outlined"}
+        style={{ display: viewFour ? "flex" : "none" }}
       >
         Model One
       </Button>
@@ -72,6 +71,7 @@ function GroupButton() {
           updateModelTwo();
         }}
         variant={modelTwo ? "contained" : "outlined"}
+        style={{ display: viewFour ? "flex" : "none" }}
       >
         Model Two
       </Button>

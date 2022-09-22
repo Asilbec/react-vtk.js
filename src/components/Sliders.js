@@ -26,7 +26,7 @@ function Sliders() {
           </Typography>
           <Slider
             defaultValue={50}
-            max={slideMax[2]}
+            max={100}
             min={-2}
             aria-label="Default"
             valueLabelDisplay="auto"
@@ -46,7 +46,7 @@ function Sliders() {
           </Typography>
           <Slider
             defaultValue={0}
-            max={260}
+            max={slideMax[3]}
             min={-2}
             aria-label="Default"
             size="small"
@@ -63,7 +63,7 @@ function Sliders() {
           </Typography>
           <Slider
             defaultValue={50}
-            max={260}
+            max={slideMax[3]}
             min={0}
             aria-label="Default"
             size="small"
