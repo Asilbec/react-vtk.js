@@ -20,17 +20,36 @@ function ControlBar() {
     <div className="MenuBarContainer">
       <div className="MenuBarContainerScroll">
         <GroupButton />
-        <Button
-          onClick={() => updateVolumeController()}
+        <div
           style={{
-            width: "95%",
-            margin: "auto",
-            display: viewFour ? "flex" : "none",
+            display: "flex",
+            boxSizing: "border-box",
+            padding: "5px",
+            gap: "10px",
           }}
-          variant="contained"
         >
-          {volumeControllerDiv ? "Model One" : "Model Two"}
-        </Button>
+          <Button
+            onClick={() => updateVolumeController()}
+            style={{
+              width: "100%",
+              display: viewFour ? "flex" : "none",
+            }}
+            variant={volumeControllerDiv ? "contained" : "outlined"}
+          >
+            Model One
+          </Button>
+
+          <Button
+            onClick={() => updateVolumeController()}
+            style={{
+              width: "100%",
+              display: viewFour ? "flex" : "none",
+            }}
+            variant={volumeControllerDiv ? "outlined" : "contained"}
+          >
+            Model Two
+          </Button>
+        </div>
 
         {(viewOne || viewTwo || viewThree) && (
           <Accordion style={{ background: "#252526" }}>

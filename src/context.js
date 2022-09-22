@@ -37,7 +37,7 @@ export const StateContext = ({ children }) => {
   };
 
   const updateModelTwo = () => {
-    console.log(modelTwoRef);
+    console.log(modelTwoRef.current.volume.get());
     if (modelTwo) {
       modelTwoRef.current.volume.setVisibility(false);
       setModelTwo(false);
