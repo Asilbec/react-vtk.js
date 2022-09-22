@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useRef } from "react";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
@@ -20,6 +20,32 @@ export const StateContext = ({ children }) => {
   const [volumeControllerDiv, setVolumeController] = useState(false);
   const [slideMax, setSlideMax] = useState([0, 0, 0]);
   const [loaded, setLoaded] = useState(true);
+  const [modelOne, setModelOne] = useState(true);
+  const [modelTwo, setModelTwo] = useState(true);
+  const modelRef = useRef();
+  const modelTwoRef = useRef();
+
+  const updateModelOne = () => {
+    console.log(modelRef);
+    if (modelOne) {
+      modelRef.current.volume.setVisibility(false);
+      setModelOne(false);
+    } else {
+      modelRef.current.volume.setVisibility(true);
+      setModelOne(true);
+    }
+  };
+
+  const updateModelTwo = () => {
+    console.log(modelTwoRef);
+    if (modelTwo) {
+      modelTwoRef.current.volume.setVisibility(false);
+      setModelTwo(false);
+    } else {
+      modelTwoRef.current.volume.setVisibility(true);
+      setModelTwo(true);
+    }
+  };
 
   const updateLoaded = () => {
     if (loaded) setLoaded(false);
@@ -166,6 +192,8 @@ export const StateContext = ({ children }) => {
         volumeControllerDiv,
         slideMax,
         loaded,
+        modelOne,
+        modelTwo,
         updateMenu,
         updateiSlice,
         updatejSlice,
@@ -181,6 +209,10 @@ export const StateContext = ({ children }) => {
         updateVolumeController,
         updateSlideMax,
         updateLoaded,
+        updateModelOne,
+        updateModelTwo,
+        modelRef,
+        modelTwoRef,
       }}
     >
       {children}

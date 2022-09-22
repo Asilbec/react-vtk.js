@@ -19,7 +19,7 @@ function Sliders() {
 
   return (
     <AccordionDetails>
-      {!viewOne && (
+      {viewOne && (
         <Box>
           <Typography fontSize={15} color="white">
             Slice K
@@ -39,7 +39,7 @@ function Sliders() {
         </Box>
       )}
 
-      {!viewTwo && (
+      {viewTwo && (
         <Box>
           <Typography fontSize={15} color="white">
             Slice I
@@ -56,7 +56,7 @@ function Sliders() {
         </Box>
       )}
 
-      {!viewThree && (
+      {viewThree && (
         <Box>
           <Typography fontSize={15} color="white">
             Slice J

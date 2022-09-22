@@ -3,8 +3,19 @@ import { useStateContext } from "../context";
 import { Button } from "@mui/material";
 
 function GroupButton() {
-  const { viewOne, viewTwo, viewThree, viewFour, updateCloseUp } =
-    useStateContext();
+  const {
+    viewOne,
+    viewTwo,
+    viewThree,
+    viewFour,
+    updateCloseUp,
+    updateModelOne,
+    updateModelTwo,
+    modelOne,
+    modelTwo,
+    modelRef,
+    modelTwoRef,
+  } = useStateContext();
 
   return (
     <div
@@ -24,7 +35,6 @@ function GroupButton() {
       >
         Slice One
       </Button>
-
       <Button
         onClick={() => {
           updateCloseUp("two");
@@ -33,7 +43,6 @@ function GroupButton() {
       >
         Slice Two
       </Button>
-
       <Button
         onClick={() => {
           updateCloseUp("three");
@@ -42,7 +51,6 @@ function GroupButton() {
       >
         Slice Three
       </Button>
-
       <Button
         onClick={() => {
           updateCloseUp("four");
@@ -50,6 +58,22 @@ function GroupButton() {
         variant={viewFour ? "contained" : "outlined"}
       >
         3D view
+      </Button>
+      <Button
+        onClick={() => {
+          updateModelOne();
+        }}
+        variant={modelOne ? "contained" : "outlined"}
+      >
+        Model One
+      </Button>
+      <Button
+        onClick={() => {
+          updateModelTwo();
+        }}
+        variant={modelTwo ? "contained" : "outlined"}
+      >
+        Model Two
       </Button>
     </div>
   );

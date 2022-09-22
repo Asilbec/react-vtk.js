@@ -1,4 +1,4 @@
-import { React, useRef, useContext, useEffect, useCallback } from "react";
+import { React, useRef, useContext, useEffect } from "react";
 import { useStateContext } from "../context";
 import ViewIndicator from "./Viewindicator";
 import ControlBar from "./ControlBar";
@@ -29,6 +29,24 @@ function DisableMouse() {
   return null;
 }
 
+function DisableView() {
+  const view = useContext(Contexts.ViewContext);
+  const { modelOne } = useStateContext();
+  useEffect(() => {
+    view.renderView();
+  }, [modelOne]);
+  return null;
+}
+
+function DisableViewTwo() {
+  const view = useContext(Contexts.ViewContext);
+  const { modelTwo } = useStateContext();
+  useEffect(() => {
+    view.renderView();
+  }, [modelTwo]);
+  return null;
+}
+
 function Viewer() {
   const {
     iSlice,
@@ -45,9 +63,9 @@ function Viewer() {
     uploadedFile,
     volumeControllerDiv,
     updateLoaded,
+    modelRef,
+    modelTwoRef,
   } = useStateContext();
-  const count = useRef();
-  const count2 = useRef();
 
   useEffect(() => {
     // setTimeout(() => {
@@ -56,7 +74,7 @@ function Viewer() {
     //   updatekSlice(0);
     // }, 3000);
     const interval = setInterval(() => {
-      if (count2.current.validData) {
+      if (modelRef.current.validData) {
         clearInterval(interval);
         updateLoaded();
       } else {
@@ -190,19 +208,22 @@ function Viewer() {
               cameraParallelProjection={false}
               className="four"
             >
-              <VolumeRepresentation>
-                <ViewIndicator number={"Volume"} />
-                <div
-                  ref={count}
-                  style={{
-                    display: volumeControllerDiv ? "none" : "flex",
-                  }}
-                >
-                  <VolumeController />
-                </div>
-                <ShareDataSet />
-              </VolumeRepresentation>
-              <VolumeRepresentation ref={count2}>
+              <div>
+                <VolumeRepresentation ref={modelRef}>
+                  <ViewIndicator number={"Volume"} />
+                  <div
+                    style={{
+                      display: volumeControllerDiv ? "none" : "flex",
+                    }}
+                  >
+                    <VolumeController />
+                  </div>
+                  <ShareDataSet />
+                  <DisableView />
+                </VolumeRepresentation>
+              </div>
+
+              <VolumeRepresentation ref={modelTwoRef}>
                 <ViewIndicator number={"Volume"} />
                 <div
                   style={{
@@ -212,6 +233,7 @@ function Viewer() {
                   <VolumeController />
                 </div>
                 <ShareDataSet />
+                <DisableViewTwo />
               </VolumeRepresentation>
             </View>
           </div>

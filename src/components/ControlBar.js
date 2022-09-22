@@ -32,7 +32,7 @@ function ControlBar() {
           {volumeControllerDiv ? "Model One" : "Model Two"}
         </Button>
 
-        {(viewOne || viewTwo || !viewThree) && (
+        {(viewOne || viewTwo || viewThree) && (
           <Accordion style={{ background: "#252526" }}>
             <AccordionSummary
               style={{ color: "white" }}
