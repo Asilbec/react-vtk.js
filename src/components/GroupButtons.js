@@ -61,7 +61,7 @@ function GroupButton() {
         onClick={() => {
           updateModelOne();
         }}
-        variant={modelOne ? "outlined" : "contained"}
+        variant={modelOne ? "contained" : "outlined"}
         style={{ display: viewFour ? "flex" : "none" }}
       >
         Model One
@@ -70,7 +70,7 @@ function GroupButton() {
         onClick={() => {
           updateModelTwo();
         }}
-        variant={modelTwo ? "outlined" : "contained"}
+        variant={modelTwo ? "contained" : "outlined"}
         style={{ display: viewFour ? "flex" : "none" }}
       >
         Model Two

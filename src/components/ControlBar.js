@@ -34,7 +34,7 @@ function ControlBar() {
               width: "100%",
               display: viewFour ? "flex" : "none",
             }}
-            variant={volumeControllerDiv ? "contained" : "outlined"}
+            variant={volumeControllerDiv ? "outlined" : "contained"}
           >
             Model One
           </Button>
@@ -45,7 +45,7 @@ function ControlBar() {
               width: "100%",
               display: viewFour ? "flex" : "none",
             }}
-            variant={volumeControllerDiv ? "outlined" : "contained"}
+            variant={volumeControllerDiv ? "contained" : "outlined"}
           >
             Model Two
           </Button>
