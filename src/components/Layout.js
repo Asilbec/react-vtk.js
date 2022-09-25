@@ -1,14 +1,16 @@
 import React from "react";
 import FileInput from "./FileInput";
 import { useStateContext } from "../context";
-import Example from "./Reader";
+import Viewer from "./Reader";
+import LoadingScreen from "./LoadingScreen";
 
 function Layout() {
   const { menu } = useStateContext();
   return (
     <div className="layout">
       <FileInput />
-      {!menu && <Example />}
+      <LoadingScreen />
+      {!menu && <Viewer />}
     </div>
   );
 }

@@ -1,36 +1,67 @@
-import React from "react";
+import { React } from "react";
 import "../css/Menu.css";
-import Slider from "@mui/material/Slider";
+import Sliders from "./Sliders";
+import GroupButton from "./GroupButtons";
+import { Accordion, AccordionSummary, Button, Typography } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useStateContext } from "../context";
 
 function ControlBar() {
-  const { updateiSlice, updatejSlice, updatekSlice } = useStateContext();
+  const {
+    viewOne,
+    viewTwo,
+    viewThree,
+    viewFour,
+    updateVolumeController,
+    volumeControllerDiv,
+  } = useStateContext();
+
   return (
     <div className="MenuBarContainer">
       <div className="MenuBarContainerScroll">
-        <Slider
-          defaultValue={128}
-          max={256}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updateiSlice(e.target.value)}
-        />
+        <GroupButton />
+        <div
+          style={{
+            display: "flex",
+            boxSizing: "border-box",
+            padding: "5px",
+            gap: "10px",
+          }}
+        >
+          <Button
+            onClick={() => updateVolumeController()}
+            style={{
+              width: "100%",
+              display: viewFour ? "flex" : "none",
+            }}
+            variant={volumeControllerDiv ? "outlined" : "contained"}
+          >
+            Model One
+          </Button>
 
-        <Slider
-          defaultValue={128}
-          max={256}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updatejSlice(e.target.value)}
-        />
+          <Button
+            onClick={() => updateVolumeController()}
+            style={{
+              width: "100%",
+              display: viewFour ? "flex" : "none",
+            }}
+            variant={volumeControllerDiv ? "contained" : "outlined"}
+          >
+            Model Two
+          </Button>
+        </div>
 
-        <Slider
-          defaultValue={47}
-          max={93}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={(e) => updatekSlice(e.target.value)}
-        />
+        {(viewOne || viewTwo || viewThree) && (
+          <Accordion style={{ background: "#252526" }}>
+            <AccordionSummary
+              style={{ color: "white" }}
+              expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
+            >
+              <Typography>Slice Controls</Typography>
+            </AccordionSummary>
+            <Sliders />
+          </Accordion>
+        )}
       </div>
     </div>
   );
