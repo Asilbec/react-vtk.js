@@ -9,21 +9,13 @@
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
     "@testing-library/jest-dom": "^5.16.5",
-<<<<<<< HEAD
-=======
     "@testing-library/react": "^13.4.0",
->>>>>>> 6170d7d4540bf1be5080f075a1e25543ccc50c73
     "@testing-library/user-event": "^13.5.0",
     "prop-types": "15.7.2",
     "pyodide": "^0.21.3",
     "ramda": "0.27.1",
-<<<<<<< HEAD
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-=======
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
->>>>>>> 6170d7d4540bf1be5080f075a1e25543ccc50c73
     "react-scripts": "^5.0.1",
     "react-vtk-js": "^1.5.5",
     "vtk.js": "^25.7.4",
