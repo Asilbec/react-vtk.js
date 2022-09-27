@@ -68,6 +68,8 @@ function Viewer() {
     modelRef,
     modelTwoRef,
     updateSlideMax,
+    loadModel,
+    modelSliceK,
   } = useStateContext();
 
   useEffect(() => {
@@ -82,6 +84,7 @@ function Viewer() {
         updateLoaded();
         console.log(modelRef.current);
         updateSlideMax(modelRef.current.volume.get().bounds);
+        loadModel();
       } else {
         console.log("not loaded yet");
       }
@@ -129,6 +132,7 @@ function Viewer() {
               cameraParallelProjection={true}
               background={[0, 0, 0]}
               className="one"
+              ref={modelSliceK}
             >
               <ShareDataSet>
                 <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />

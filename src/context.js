@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useRef } from "react";
+import * as tf from "@tensorflow/tfjs";
+
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
@@ -24,6 +26,7 @@ export const StateContext = ({ children }) => {
   const [modelTwo, setModelTwo] = useState(true);
   const modelRef = useRef();
   const modelTwoRef = useRef();
+  const modelSliceK = useRef();
 
   const updateModelOne = () => {
     console.log(modelRef);
@@ -35,6 +38,27 @@ export const StateContext = ({ children }) => {
       setModelOne(true);
     }
   };
+
+  async function loadModel() {
+    // //load the feature extraction portion of the model
+    tf.loadLayersModel("/savedModels/model.json").then(function (loadedModel) {
+      const featureExtraction = loadedModel;
+      featureExtraction.summary();
+      featureExtraction.summary();
+    });
+    //load the dense layers portion of the model
+  }
+
+  // const Prediction = () => {
+  //   let resized = tf.browser
+  //     .fromPixels(videoRef.current)
+  //     .resizeBilinear([224, 224]);
+  //   let normalized = tf.div(resized, 255);
+  //   let data = tf.reshape(normalized, [1, 224, 224, 3]);
+  //   let prediction;
+  //   prediction = model.predict(data).arraySync();
+  //   console.log(prediction);
+  // };
 
   const updateModelTwo = () => {
     console.log(modelTwoRef.current.volume.get());
@@ -211,8 +235,10 @@ export const StateContext = ({ children }) => {
         updateLoaded,
         updateModelOne,
         updateModelTwo,
+        loadModel,
         modelRef,
         modelTwoRef,
+        modelSliceK,
       }}
     >
       {children}

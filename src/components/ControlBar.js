@@ -14,6 +14,7 @@ function ControlBar() {
     viewFour,
     updateVolumeController,
     volumeControllerDiv,
+    modelSliceK,
   } = useStateContext();
 
   return (
@@ -50,6 +51,23 @@ function ControlBar() {
             Model Two
           </Button>
         </div>
+
+        <Button
+          onClick={() => {
+            modelSliceK.current.renderWindow
+              .captureImages()[0]
+              .then((image) => {
+                console.log(image);
+              });
+          }}
+          style={{
+            width: "100%",
+            display: viewOne ? "flex" : "none",
+          }}
+          variant={volumeControllerDiv ? "contained" : "outlined"}
+        >
+          modelSliceK
+        </Button>
 
         {(viewOne || viewTwo || viewThree) && (
           <Accordion style={{ background: "#252526" }}>
