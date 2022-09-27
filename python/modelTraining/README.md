@@ -1,9 +1,9 @@
 ### Generating COVID-19 Classification Models
 
-This explains the variety of methods and techniques that were utilized to train models to identify COVID-19 in axial CT scans. 
+This explains the variety of methods and techniques that were utilized to train models to identify COVID-19 in axial Chest CT scans. 
 
 ## Dataset
-The dataset used contains 2D axial slices from CT scans of the lungs in patients with and without COVID-19. 
+The dataset used contains 2D axial slices from Chest CT scans in patients with and without COVID-19. 
 https://github.com/UCSD-AI4H/COVID-CT
 
 ## Preprocessing
