@@ -1,5 +1,6 @@
-This code was used to generate models to classify COVID-19 ct images. 
+### Generating COVID-19 Classification Models
 
+This explains the variety of methods and techniques that were utilized to train models to identify COVID-19 in axial CT scans. 
 
 ## Dataset
 The dataset used contains 2D axial slices from CT scans of the lungs in patients with and without COVID-19. 
@@ -37,3 +38,10 @@ https://github.com/taki0112/vit-tensorflow
 
 ### train_model.py
 Imports all functions to execute loading and processing data, training the model, evaluating model, and saving tf and tfjs instances of model. 
+
+## To-Do
+<li></li> Download, load and fine tune ViT model on this datast
+<li></li> Implement Weights and Biases to monitor training, evaluate performance, and tune hyperparameters
+<li></li> Recreate in javascript
+<li></li> Implement models with react vtk.js viewer to run live inferences on medical ct scans
+<li></li> Train on more robust dataset
