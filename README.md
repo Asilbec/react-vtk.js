@@ -12,6 +12,11 @@
 ## Demo
 Live Demo: https://vti-viewer.netlify.app/
 
+## How to Start
+1. 
+2. 
+3. 
+
 
 ## To-do
 - Add support for overlapping volumes 

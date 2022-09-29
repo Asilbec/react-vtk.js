@@ -1,9 +1,9 @@
 #@title ViT 
 import tensorflow as tf
-from tensorflow.keras import Model
-from tensorflow.keras.layers import Layer
-from tensorflow.keras import Sequential
-import tensorflow.keras.layers as nn
+from keras import Model
+from keras.layers import Layer
+from keras import Sequential
+import keras.layers as nn
 
 from tensorflow import einsum
 from einops import rearrange, repeat
