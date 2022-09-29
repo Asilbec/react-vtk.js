@@ -17,13 +17,13 @@ function DisableMouse() {
   const clicks = useRef(0);
   useEffect(() => {
     clicks.current = 0;
-    view.interactor.onRightButtonPress(() => {
-      // view.renderWindow.captureImages()[0].then((image) => {
-      //   console.log(image);
-      // });
-      // console.log(view.renderer.getSize());
-      // console.log(view.axesActor.getActors()[0].getXRange());
-    });
+    // view.interactor.onRightButtonPress(() => {
+    //   view.renderWindow.captureImages()[0].then((image) => {
+    //     console.log(image);
+    //   });
+    //   // console.log(view.renderer.getSize());
+    //   // console.log(view.axesActor.getActors()[0].getXRange());
+    // });
     view.defaultStyle.setRotationFactor(0);
   }, [view]);
   return null;
@@ -106,13 +106,20 @@ function Viewer() {
         alignItems: "center",
         boxSizing: "border-box",
         padding: "5px",
-        paddingLeft: "0px",
+        paddingRight: "0px",
       }}
     >
       <ShareDataSet>
         <Reader vtkClass="vtkXMLImageDataReader" url={uploadedFile} />
       </ShareDataSet>
-      <div style={{ width: "100%", height: "100%", display: "flex" }}>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row-reverse",
+        }}
+      >
         <ControlBar />
         <div
           style={{

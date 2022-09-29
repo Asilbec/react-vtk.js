@@ -24,6 +24,7 @@ export const StateContext = ({ children }) => {
   const [loaded, setLoaded] = useState(true);
   const [modelOne, setModelOne] = useState(true);
   const [modelTwo, setModelTwo] = useState(true);
+  const [files, setNewFiles] = useState([]);
   const modelRef = useRef();
   const modelTwoRef = useRef();
   const modelSliceK = useRef();
@@ -37,6 +38,14 @@ export const StateContext = ({ children }) => {
       modelRef.current.volume.setVisibility(true);
       setModelOne(true);
     }
+  };
+
+  const updateFiles = (fileuri) => {
+    setNewFiles((files) => [...files, fileuri]);
+  };
+
+  const updateFilesOrder = (list) => {
+    setNewFiles(list);
   };
 
   async function loadModel() {
@@ -239,6 +248,9 @@ export const StateContext = ({ children }) => {
         modelRef,
         modelTwoRef,
         modelSliceK,
+        updateFiles,
+        files,
+        updateFilesOrder,
       }}
     >
       {children}

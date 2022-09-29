@@ -4,11 +4,14 @@
     max-width: 350px;
     box-sizing: border-box;
     padding-right: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
 }
 
 .MenuBarContainerScroll{
     width: 100%;
-    margin-top: 40px;
     color: white;
     display: flex;
     flex-direction: column;

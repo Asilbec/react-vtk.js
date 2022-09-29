@@ -11,7 +11,7 @@ h1,h2,h3,h4,h5,p{
 .layout{
   width: 100%;
   min-height: 100vh;
-  background: #252526;
+  background: #000000;
 
   display: flex;
   justify-content: 'center';
