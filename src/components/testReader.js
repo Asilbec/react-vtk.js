@@ -9,7 +9,8 @@ import ControlBar from "./File/ControlBar";
 import { useStateContext } from "../context";
 
 function TestReader() {
-  const { files, viewref, selected, volcontref } = useStateContext();
+  const { files, viewref, selected, volcontref, volconpointref } =
+    useStateContext();
 
   return (
     <div
@@ -43,7 +44,11 @@ function TestReader() {
                     volcontref.current[index] = element;
                   }}
                 >
-                  <VolumeController />
+                  <VolumeController
+                    ref={(element) => {
+                      volconpointref.current[index] = element;
+                    }}
+                  />
                 </div>
 
                 <Reader

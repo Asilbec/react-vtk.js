@@ -7,6 +7,7 @@ export const StateContext = ({ children }) => {
   const [selected, setSelected] = useState(null);
   const viewref = useRef([]);
   const volcontref = useRef([]);
+  const volconpointref = useRef([]);
 
   const updateFiles = (fileuri) => {
     setNewFiles((files) => [...files, fileuri]);
@@ -24,6 +25,7 @@ export const StateContext = ({ children }) => {
         files,
         viewref,
         volcontref,
+        volconpointref,
         updateFiles,
         updateSelected,
       }}
