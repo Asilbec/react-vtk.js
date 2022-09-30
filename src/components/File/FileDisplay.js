@@ -3,7 +3,7 @@ import { useStateContext } from "../../context";
 import { Typography, ListItem, List, Button } from "@mui/material";
 
 function FileDisplay() {
-  const { files, viewref } = useStateContext();
+  const { files, updateSelected, selected } = useStateContext();
   return (
     <div style={{ width: "95%", margin: "0 auto" }}>
       <Typography fontSize={20} color={"#4ba5d6"}>
@@ -27,11 +27,10 @@ function FileDisplay() {
             >
               <Button
                 onClick={() => {
-                  viewref.current[index].volume.setVisibility(false);
-                  viewref.current[index].view.renderView();
+                  updateSelected(index);
                 }}
                 sx={{ width: "100%" }}
-                variant="outlined"
+                variant={selected === index ? "contained" : "outlined"}
               >
                 {file.name}
               </Button>

@@ -5,8 +5,10 @@ import { Button } from "@mui/material";
 import FileUpload from "./FileUpload";
 import FileDisplay from "./FileDisplay";
 import ImageSettings from "../MenuSettings/ImageSettings";
+import { useStateContext } from "../../context";
 function ControlBar() {
   const [ControlBarWidth, setControlBarWidth] = useState(true);
+  const { selected } = useStateContext();
 
   return ControlBarWidth ? (
     <div id="menbarContainer" className="MenuBarContainer">
@@ -21,7 +23,7 @@ function ControlBar() {
       </Button>
       <FileUpload />
       <FileDisplay />
-      <ImageSettings />
+      {selected !== null ? <ImageSettings /> : <div></div>}
     </div>
   ) : (
     <div

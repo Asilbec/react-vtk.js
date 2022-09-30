@@ -9,7 +9,7 @@ import ControlBar from "./File/ControlBar";
 import { useStateContext } from "../context";
 
 function TestReader() {
-  const { files, viewref } = useStateContext();
+  const { files, viewref, selected, volcontref } = useStateContext();
 
   return (
     <div
@@ -37,9 +37,15 @@ function TestReader() {
                   viewref.current[index] = element;
                 }}
               >
-                <div style={{ display: "none" }}>
+                <div
+                  style={{ display: selected === index ? "flex" : "none" }}
+                  ref={(element) => {
+                    volcontref.current[index] = element;
+                  }}
+                >
                   <VolumeController />
                 </div>
+
                 <Reader
                   vtkClass="vtkXMLImageDataReader"
                   url={files[index].uri}
