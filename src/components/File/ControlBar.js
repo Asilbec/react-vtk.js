@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 // import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FileUpload from "./FileUpload";
 import FileDisplay from "./FileDisplay";
+import ImageSettings from "../MenuSettings/ImageSettings";
 function ControlBar() {
   const [ControlBarWidth, setControlBarWidth] = useState(true);
 
@@ -20,6 +21,7 @@ function ControlBar() {
       </Button>
       <FileUpload />
       <FileDisplay />
+      <ImageSettings />
     </div>
   ) : (
     <div

@@ -15,7 +15,6 @@ function FileDrop() {
 function FileUpload() {
   const { updateFiles } = useStateContext();
   function GetUri(file) {
-    console.log(file);
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {

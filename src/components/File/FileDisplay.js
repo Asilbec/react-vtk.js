@@ -1,15 +1,9 @@
 import React from "react";
 import { useStateContext } from "../../context";
-import {
-  Typography,
-  ListItem,
-  List,
-  ListItemText,
-  Button,
-} from "@mui/material";
+import { Typography, ListItem, List, Button } from "@mui/material";
 
 function FileDisplay() {
-  const { files } = useStateContext();
+  const { files, viewref } = useStateContext();
   return (
     <div style={{ width: "95%", margin: "0 auto" }}>
       <Typography fontSize={20} color={"#4ba5d6"}>
@@ -31,7 +25,14 @@ function FileDisplay() {
                 padding: "5px 0px",
               }}
             >
-              <Button sx={{ width: "100%" }} variant="outlined">
+              <Button
+                onClick={() => {
+                  viewref.current[index].volume.setVisibility(false);
+                  viewref.current[index].view.renderView();
+                }}
+                sx={{ width: "100%" }}
+                variant="outlined"
+              >
                 {file.name}
               </Button>
             </ListItem>

@@ -9,7 +9,7 @@ import ControlBar from "./File/ControlBar";
 import { useStateContext } from "../context";
 
 function TestReader() {
-  const { files } = useStateContext();
+  const { files, viewref } = useStateContext();
 
   return (
     <div
@@ -32,7 +32,11 @@ function TestReader() {
         >
           {files.map((file, index) => (
             <div key={index}>
-              <VolumeRepresentation>
+              <VolumeRepresentation
+                ref={(element) => {
+                  viewref.current[index] = element;
+                }}
+              >
                 <div style={{ display: "none" }}>
                   <VolumeController />
                 </div>
