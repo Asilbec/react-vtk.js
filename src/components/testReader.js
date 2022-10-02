@@ -9,9 +9,8 @@ import ControlBar from "./File/ControlBar";
 import { useStateContext } from "../context";
 
 function TestReader() {
-  const { files, viewref, selected, volcontref, volconpointref } =
+  const { files, viewref, selected, graphlist, selectedMap } =
     useStateContext();
-
   return (
     <div
       style={{
@@ -38,22 +37,17 @@ function TestReader() {
                   viewref.current[index] = element;
                 }}
               >
-                <div
-                  style={{ display: selected === index ? "flex" : "none" }}
-                  ref={(element) => {
-                    volcontref.current[index] = element;
-                  }}
-                >
-                  <VolumeController
-                    ref={(element) => {
-                      volconpointref.current[index] = element;
-                    }}
-                  />
-                  <VolumeController
-                    ref={(element) => {
-                      volconpointref.current[index] = element;
-                    }}
-                  />
+                <div style={{ display: selected === index ? "flex" : "none" }}>
+                  {graphlist[selectedMap].map((list, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: selectedMap === index ? "flex" : "none",
+                      }}
+                    >
+                      <VolumeController key={index} />
+                    </div>
+                  ))}
                 </div>
 
                 <Reader
