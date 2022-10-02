@@ -49,6 +49,11 @@ function TestReader() {
                       volconpointref.current[index] = element;
                     }}
                   />
+                  <VolumeController
+                    ref={(element) => {
+                      volconpointref.current[index] = element;
+                    }}
+                  />
                 </div>
 
                 <Reader

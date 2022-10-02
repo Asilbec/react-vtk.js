@@ -17,6 +17,7 @@ function ImageSettings() {
   const Visibility = viewref.current[selected].volume.getVisibility();
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
   const [selectedVolumeCont, newSelectedVolumeCont] = useState(false);
+  const [testnodes, setTestNodes] = useState([]);
 
   useEffect(() => {
     newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
@@ -88,11 +89,42 @@ function ImageSettings() {
         Scalars
       </Typography>
       <Button
-        onClick={() =>
+        onClick={() => {
+          // setTestNodes({
+          //   nodes:
+          //     volconpointref.current[selected].representation.lookupTable.get()
+          //       .nodes,
+          //   range:
+          //     volconpointref.current[selected].representation.lookupTable.get()
+          //       .mappingRange,
+          // });
+          // // console.log(volconpointref.current[selected].controller.delete());
+          // console.log(volconpointref.current[selected]);
           console.log(
-            volconpointref.current[selected].representation.lookupTable.get()
-          )
-        }
+            volconpointref.current[selected].controller
+              .get()
+              .widget.get()
+              .colorTransferFunction.get()
+          );
+          setTestNodes({
+            gaussian: volconpointref.current[selected].controller
+              .get()
+              .widget.get().gaussians[0],
+          });
+        }}
+        variant="contained"
+      >
+        Click Me
+      </Button>
+      <Button
+        onClick={() => {
+          // volconpointref.current[selected].controller
+          //   .get()
+          //   .widget.addGaussian(1, 0.5, 0.5, 0.5, 0.4);
+          // console.log(testnodes);
+
+          console.log(volconpointref.current[selected].controller.get().widget);
+        }}
         variant="contained"
       >
         Click Me

@@ -8,6 +8,8 @@ export const StateContext = ({ children }) => {
   const viewref = useRef([]);
   const volcontref = useRef([]);
   const volconpointref = useRef([]);
+  const [selectedMap, setSelectedMap] = useState(0);
+  const [graphlist, setGraphList] = useState([]);
 
   const updateFiles = (fileuri) => {
     setNewFiles((files) => [...files, fileuri]);
@@ -16,6 +18,10 @@ export const StateContext = ({ children }) => {
   const updateSelected = (index) => {
     if (selected === index) setSelected(null);
     else setSelected(index);
+  };
+
+  const updateGraphList = (item) => {
+    setGraphList((files) => [...graphlist, item]);
   };
 
   return (
@@ -28,6 +34,7 @@ export const StateContext = ({ children }) => {
         volconpointref,
         updateFiles,
         updateSelected,
+        updateGraphList,
       }}
     >
       {children}
