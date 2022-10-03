@@ -13,7 +13,8 @@ import "./MenuSettings.css";
 import { AiFillEye } from "react-icons/ai";
 
 function ImageSettings() {
-  const { selected, viewref, graphlist, updateSelectedMap } = useStateContext();
+  const { selected, viewref, graphlist, updateSelectedMap, addtoMap } =
+    useStateContext();
   const Visibility = viewref.current[selected].volume.getVisibility();
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
   const [selectedVolumeCont, newSelectedVolumeCont] = useState(false);
@@ -74,18 +75,20 @@ function ImageSettings() {
       <Typography fontSize={20} color={"#4ba5d6"}>
         Scalars
       </Typography>
+      <div>
+        {graphlist[selected].map((list, index) => (
+          <Button
+            onClick={() => updateSelectedMap(index)}
+            variant="contained"
+            key={index}
+          >
+            {index}
+          </Button>
+        ))}
+      </div>
       <Button
         onClick={() => {
-          updateSelectedMap(0);
-        }}
-        variant="contained"
-      >
-        Click Me
-      </Button>
-      <Button
-        onClick={() => {
-          console.log(graphlist[selected]);
-          updateSelectedMap(1);
+          addtoMap(selected);
         }}
         variant="contained"
       >

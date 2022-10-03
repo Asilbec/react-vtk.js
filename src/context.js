@@ -16,6 +16,7 @@ export const StateContext = ({ children }) => {
 
   const updateFiles = (fileuri) => {
     setNewFiles((files) => [...files, fileuri]);
+    setGraphList((graphlist) => [...graphlist, [1, 2]]);
   };
 
   const updateSelected = (index) => {
@@ -35,7 +36,7 @@ export const StateContext = ({ children }) => {
 
   const addtoMap = (index) => {
     graphlist[index].push(1);
-    setGraphList(graphlist);
+    console.log(graphlist);
   };
 
   return (
