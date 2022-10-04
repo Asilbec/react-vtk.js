@@ -9,7 +9,7 @@ import ControlBar from "./File/ControlBar";
 import { useStateContext } from "../context";
 
 function TestReader() {
-  const { files, viewref, selected, graphlist, selectedMap } =
+  const { files, viewref, selected, graphlist, selectedMap, volcontref } =
     useStateContext();
   return (
     <div
@@ -45,7 +45,12 @@ function TestReader() {
                         display: selectedMap === index ? "flex" : "none",
                       }}
                     >
-                      <VolumeController key={index} />
+                      <VolumeController
+                        ref={(element) => {
+                          volcontref.current[index] = element;
+                        }}
+                        key={index}
+                      />
                     </div>
                   ))}
                 </div>

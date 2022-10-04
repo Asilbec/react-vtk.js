@@ -13,26 +13,28 @@ import "./MenuSettings.css";
 import { AiFillEye } from "react-icons/ai";
 
 function ImageSettings() {
-  const { selected, viewref, graphlist, updateSelectedMap, addtoMap } =
-    useStateContext();
+  const {
+    selected,
+    viewref,
+    graphlist,
+    updateSelectedMap,
+    volcontref,
+    selectedMap,
+  } = useStateContext();
   const Visibility = viewref.current[selected].volume.getVisibility();
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
-  const [selectedVolumeCont, newSelectedVolumeCont] = useState(false);
 
   useEffect(() => {
     newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
-    newSelectedVolumeCont(false);
   }, [selected]);
 
   function changeVisibiltiy() {
     if (viewref.current[selected].volume.getVisibility()) {
       newSelectedVolumeVis(false);
       viewref.current[selected].volume.setVisibility(false);
-      newSelectedVolumeCont(false);
     } else {
       newSelectedVolumeVis(true);
       viewref.current[selected].volume.setVisibility(true);
-      newSelectedVolumeCont(true);
     }
     viewref.current[selected].view.renderView();
   }
@@ -57,20 +59,6 @@ function ImageSettings() {
             checked={selectedVolumeVis}
           />
         </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <AiFillEye color="white" />
-          </ListItemIcon>
-          <ListItemText
-            style={{ color: "white" }}
-            id="switch-list-label-bluetooth"
-            primary="Mapper"
-          />
-          <Switch
-            // onChange={() => chnageVolumeController()}
-            checked={selectedVolumeCont}
-          />
-        </ListItem>
       </List>
       <Typography fontSize={20} color={"#4ba5d6"}>
         Scalars
@@ -88,7 +76,7 @@ function ImageSettings() {
       </div>
       <Button
         onClick={() => {
-          addtoMap(selected);
+          console.log(volcontref.current[selectedMap].controller.getWidget());
         }}
         variant="contained"
       >
