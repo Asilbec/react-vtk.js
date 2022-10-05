@@ -76,7 +76,7 @@ function ImageSettings() {
       </div>
       <Button
         onClick={() => {
-          console.log(volcontref.current[selectedMap].controller.getWidget());
+          console.log(volcontref.current[selectedMap]);
         }}
         variant="contained"
       >
