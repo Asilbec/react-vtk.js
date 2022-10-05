@@ -9,31 +9,10 @@ import {
 import ControlBar from "./File/ControlBar";
 import { useStateContext } from "../context";
 
-function DisableView() {
-  const view = useContext(Contexts.RepresentationContext);
-  const { selectedMap } = useStateContext();
-  useEffect(() => {
-    console.log(view);
-  }, [selectedMap]);
-  return null;
-}
-
 function VolumeReturn(props) {
   const { files, viewref, selected, graphlist, selectedMap, volcontref } =
     useStateContext();
   const indexz = props.data;
-
-  useEffect(() => {
-    console.log(volcontref.current[selectedMap].controller.get());
-    console.log("nice");
-    console.log(
-      document
-        .getElementsByClassName(
-          "VolumeController-module_piecewiseEditor__2_jav js-pwf js-toggle"
-        )
-        [selectedMap].children[0].click()
-    );
-  }, [selectedMap]);
 
   return (
     <VolumeRepresentation

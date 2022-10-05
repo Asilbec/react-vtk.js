@@ -76,7 +76,23 @@ function ImageSettings() {
       </div>
       <Button
         onClick={() => {
-          console.log(volcontref.current[selectedMap]);
+          // const range = volcontref.current[selectedMap].controller
+          //   .get()
+          //   .widget.get()
+          //   .colorTransferFunction.get().mappingRange;
+          // console.log(range);
+          // console.log(
+          //   volcontref.current[selectedMap].controller
+          //     .get()
+          //     .widget.get()
+          //     .colorTransferFunction.setRange(range[0], range[1])
+          // );
+          // volcontref.current[selectedMap].controller
+          // .get()
+          // .widget.get()
+          // .colorTransferFunction.set().mappingRange
+
+          console.log(volcontref.current[selectedMap].controller);
         }}
         variant="contained"
       >
