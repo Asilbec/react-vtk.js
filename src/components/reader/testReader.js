@@ -1,19 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import {
   View,
   Reader,
   VolumeController,
   VolumeRepresentation,
-  Contexts,
 } from "react-vtk-js";
-import ControlBar from "./File/ControlBar";
-import { useStateContext } from "../context";
+import ControlBar from "../File/ControlBar";
+import { useStateContext } from "../../context";
 
 function VolumeReturn(props) {
   const { files, viewref, selected, graphlist, selectedMap, volcontref } =
     useStateContext();
   const indexz = props.data;
-
   return (
     <VolumeRepresentation
       ref={(element) => {
@@ -38,14 +36,12 @@ function VolumeReturn(props) {
         ))}
       </div>
       <Reader vtkClass="vtkXMLImageDataReader" url={files[indexz].uri} />
-      {/* <DisableView></DisableView> */}
     </VolumeRepresentation>
   );
 }
 
 function TestReader() {
-  const { files, viewref, selected, graphlist, selectedMap, volcontref } =
-    useStateContext();
+  const { files } = useStateContext();
 
   return (
     <div

@@ -1,7 +1,5 @@
 import { React, useState } from "react";
-// import Sliders from "./Sliders";
 import { Button } from "@mui/material";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FileUpload from "./FileUpload";
 import FileDisplay from "./FileDisplay";
 import ImageSettings from "../MenuSettings/ImageSettings";

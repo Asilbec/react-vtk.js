@@ -92,7 +92,11 @@ function ImageSettings() {
           // .widget.get()
           // .colorTransferFunction.set().mappingRange
 
-          console.log(volcontref.current[selectedMap].controller);
+          console.log(
+            volcontref.current[selectedMap].controller
+              .get()
+              .widget.invokeOpacityChange()
+          );
         }}
         variant="contained"
       >
