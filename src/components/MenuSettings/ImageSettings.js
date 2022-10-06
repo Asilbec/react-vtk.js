@@ -20,6 +20,7 @@ function ImageSettings() {
     updateSelectedMap,
     volcontref,
     selectedMap,
+    addtoMap,
   } = useStateContext();
   const Visibility = viewref.current[selected].volume.getVisibility();
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
@@ -27,6 +28,12 @@ function ImageSettings() {
   useEffect(() => {
     newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
   }, [selected]);
+
+  useEffect(() => {
+    volcontref.current[selectedMap].controller
+      .getWidget()
+      .invokeOpacityChange();
+  }, [selectedMap]);
 
   function changeVisibiltiy() {
     if (viewref.current[selected].volume.getVisibility()) {
@@ -70,33 +77,13 @@ function ImageSettings() {
             variant="contained"
             key={index}
           >
-            {index}
+            Scalar {index + 1}
           </Button>
         ))}
       </div>
       <Button
         onClick={() => {
-          // const range = volcontref.current[selectedMap].controller
-          //   .get()
-          //   .widget.get()
-          //   .colorTransferFunction.get().mappingRange;
-          // console.log(range);
-          // console.log(
-          //   volcontref.current[selectedMap].controller
-          //     .get()
-          //     .widget.get()
-          //     .colorTransferFunction.setRange(range[0], range[1])
-          // );
-          // volcontref.current[selectedMap].controller
-          // .get()
-          // .widget.get()
-          // .colorTransferFunction.set().mappingRange
-
-          console.log(
-            volcontref.current[selectedMap].controller
-              .get()
-              .widget.invokeOpacityChange()
-          );
+          addtoMap(0);
         }}
         variant="contained"
       >
