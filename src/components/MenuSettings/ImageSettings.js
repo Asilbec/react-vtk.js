@@ -6,6 +6,8 @@ import {
   ListItemIcon,
   Switch,
   Button,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useStateContext } from "../../context";
@@ -70,25 +72,17 @@ function ImageSettings() {
       <Typography fontSize={20} color={"#4ba5d6"}>
         Scalars
       </Typography>
-      <div>
+      <div style={{ display: "grid", gridTemplateColumns: "auto auto" }}>
         {graphlist[selected].map((list, index) => (
           <Button
             onClick={() => updateSelectedMap(index)}
-            variant="contained"
+            variant={index === selectedMap ? "contained" : "outlined"}
             key={index}
           >
             Scalar {index + 1}
           </Button>
         ))}
       </div>
-      <Button
-        onClick={() => {
-          addtoMap(0);
-        }}
-        variant="contained"
-      >
-        Click Me
-      </Button>
     </div>
   );
 }

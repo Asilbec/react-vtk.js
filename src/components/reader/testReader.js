@@ -12,6 +12,7 @@ function VolumeReturn(props) {
   const { files, viewref, selected, graphlist, selectedMap, volcontref } =
     useStateContext();
   const indexz = props.data;
+  console.log(selectedMap);
   return (
     <VolumeRepresentation
       ref={(element) => {

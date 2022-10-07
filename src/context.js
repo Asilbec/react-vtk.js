@@ -10,13 +10,13 @@ export const StateContext = ({ children }) => {
   const volconpointref = useRef([]);
   const [selectedMap, setSelectedMap] = useState(0);
   const [graphlist, setGraphList] = useState([
-    [1, 2],
-    [1, 2],
+    [1, 2, 3, 4],
+    [1, 2, 3, 4],
   ]);
 
   const updateFiles = (fileuri) => {
     setNewFiles((files) => [...files, fileuri]);
-    setGraphList((graphlist) => [...graphlist, [1, 2]]);
+    setGraphList((graphlist) => [...graphlist, [1, 2, 3, 4]]);
   };
 
   const updateSelected = (index) => {
@@ -36,7 +36,6 @@ export const StateContext = ({ children }) => {
 
   const addtoMap = (index) => {
     graphlist[index].push(1);
-    console.log(graphlist);
   };
 
   return (
