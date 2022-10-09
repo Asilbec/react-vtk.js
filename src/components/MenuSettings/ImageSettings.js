@@ -22,7 +22,6 @@ function ImageSettings() {
     updateSelectedMap,
     volcontref,
     selectedMap,
-    addtoMap,
   } = useStateContext();
   const Visibility = viewref.current[selected].volume.getVisibility();
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
@@ -75,7 +74,10 @@ function ImageSettings() {
       <div style={{ display: "grid", gridTemplateColumns: "auto auto" }}>
         {graphlist[selected].map((list, index) => (
           <Button
-            onClick={() => updateSelectedMap(index)}
+            onClick={() => {
+              updateSelectedMap(index);
+              console.log(graphlist[selectedMap][index]);
+            }}
             variant={index === selectedMap ? "contained" : "outlined"}
             key={index}
           >
