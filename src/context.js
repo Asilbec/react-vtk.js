@@ -49,11 +49,13 @@ export const StateContext = ({ children }) => {
         volconpointref,
         selectedMap,
         graphlist,
+        filenamelist,
         updateFiles,
         updateSelected,
         updateGraphList,
         updateSelectedMap,
         addtoMap,
+        setfilenamelist,
       }}
     >
       {children}
