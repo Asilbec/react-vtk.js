@@ -14,6 +14,7 @@ export const StateContext = ({ children }) => {
     [1, 2, 3],
   ]);
   const [filenamelist, setfilenamelist] = useState();
+  const [updated, setupdated] = useState();
 
   const updateFiles = (fileuri) => {
     setNewFiles((files) => [...files, fileuri]);
