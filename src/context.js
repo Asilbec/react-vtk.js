@@ -57,6 +57,7 @@ export const StateContext = ({ children }) => {
         updateSelectedMap,
         addtoMap,
         setfilenamelist,
+        updated,
       }}
     >
       {children}
