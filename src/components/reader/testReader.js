@@ -19,7 +19,7 @@ function VolumeReturn(props) {
       }}
     >
       <div style={{ display: selected === indexz ? "flex" : "none" }}>
-        {graphlist[selectedMap].map((list, index) => (
+        {/* {graphlist[selectedMap].map((list, index) => (
           <div
             key={index}
             style={{
@@ -33,7 +33,12 @@ function VolumeReturn(props) {
               key={index}
             />
           </div>
-        ))}
+        ))} */}
+        <VolumeController
+          ref={(element) => {
+            volcontref.current[indexz] = element;
+          }}
+        />
       </div>
       <Reader vtkClass="vtkXMLImageDataReader" url={files[indexz].uri} />
     </VolumeRepresentation>

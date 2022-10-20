@@ -30,11 +30,11 @@ function ImageSettings() {
     newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
   }, [selected]);
 
-  useEffect(() => {
-    volcontref.current[selectedMap].controller
-      .getWidget()
-      .invokeOpacityChange();
-  }, [selectedMap]);
+  // useEffect(() => {
+  //   volcontref.current[selectedMap].controller
+  //     .getWidget()
+  //     .invokeOpacityChange();
+  // }, [selectedMap]);
 
   function changeVisibiltiy() {
     if (viewref.current[selected].volume.getVisibility()) {
@@ -72,7 +72,7 @@ function ImageSettings() {
         Scalars
       </Typography>
       <div style={{ display: "grid", gridTemplateColumns: "auto auto" }}>
-        {graphlist[selected].map((list, index) => (
+        {/* {graphlist[selected].map((list, index) => (
           <Button
             onClick={() => {
               updateSelectedMap(index);
@@ -83,7 +83,19 @@ function ImageSettings() {
           >
             Scalar {index + 1}
           </Button>
-        ))}
+        ))} */}
+        <Button
+          onClick={() => {
+            console.log(volcontref.current[selected].controller.getWidget());
+            // console.log(
+            //   volcontref.current[selected].controller
+            //     .getWidget()
+            //     .addGaussian(0.5, 1, 0.5, 0.5, 0.5)
+            // );
+          }}
+        >
+          Click Me
+        </Button>
       </div>
     </div>
   );
