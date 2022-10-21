@@ -3,7 +3,7 @@ import { useStateContext } from "../../context";
 import { Typography, ListItem, List, Button } from "@mui/material";
 
 function FileDisplay() {
-  const { files, updateSelected, selected } = useStateContext();
+  const { filenamelist, updateSelected, selected } = useStateContext();
   return (
     <div style={{ width: "95%", margin: "0 auto" }}>
       <Typography fontSize={20} color={"#4ba5d6"}>
@@ -16,7 +16,7 @@ function FileDisplay() {
             background: "black",
           }}
         >
-          {files.map((file, index) => (
+          {filenamelist.map((file, index) => (
             <ListItem
               key={index}
               sx={{
@@ -32,7 +32,7 @@ function FileDisplay() {
                 sx={{ width: "100%" }}
                 variant={selected === index ? "contained" : "outlined"}
               >
-                {file.name}
+                {filenamelist[index]}
               </Button>
             </ListItem>
           ))}

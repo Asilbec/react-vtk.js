@@ -13,11 +13,18 @@ export const StateContext = ({ children }) => {
     [1, 2, 3],
     [1, 2, 3],
   ]);
-  const [filenamelist, setfilenamelist] = useState();
+  const [filenamelist, setfilenamelist] = useState([]);
   const [updated, setupdated] = useState();
 
-  const updateFiles = (fileuri) => {
+  const updatefilelist = (index, filename) => {
+    const list = filenamelist;
+    list[index] = filename;
+    setfilenamelist(list);
+  };
+
+  const updateFiles = (fileuri, filename) => {
     setNewFiles((files) => [...files, fileuri]);
+    setfilenamelist((filenamelist) => [...filenamelist, filename]);
     setGraphList((graphlist) => [...graphlist, [1, 2, 3]]);
   };
 
@@ -58,6 +65,7 @@ export const StateContext = ({ children }) => {
         addtoMap,
         setfilenamelist,
         updated,
+        updatefilelist,
       }}
     >
       {children}
