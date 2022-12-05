@@ -10,6 +10,8 @@ import {
 } from "react-vtk-js";
 import { useStateContext } from "../../context";
 import { Button, imageListClasses } from "@mui/material";
+import { saveAs } from "file-saver";
+import axios from "axios";
 
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
@@ -108,6 +110,24 @@ function SliceReader() {
           onClick={() => setImageList([])}
         >
           Clear
+        </Button>
+
+        <Button
+          onClick={() => {
+            axios
+              .post("http://localhost:9000/text", {
+                file: imagelist[0],
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }}
+          variant="contained"
+        >
+          SAVE
         </Button>
 
         <input
