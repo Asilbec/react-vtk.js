@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import {
   View,
   Reader,
   VolumeController,
   VolumeRepresentation,
+  ShareDataSet,
+  SliceRepresentation,
+  Contexts,
 } from "react-vtk-js";
 import ControlBar from "../File/ControlBar";
 import { useStateContext } from "../../context";
 
 function VolumeReturn(props) {
-  const { files, viewref, selected, graphlist, selectedMap, volcontref } =
-    useStateContext();
+  const {
+    files,
+    viewref,
+    selected,
+    graphlist,
+    selectedMap,
+    volcontref,
+    volumeview,
+  } = useStateContext();
   const indexz = props.data;
   return (
     <VolumeRepresentation
@@ -34,6 +44,7 @@ function VolumeReturn(props) {
             />
           </div>
         ))} */}
+
         <VolumeController
           ref={(element) => {
             volcontref.current[indexz] = element;
@@ -46,7 +57,15 @@ function VolumeReturn(props) {
 }
 
 function TestReader() {
-  const { files } = useStateContext();
+  const { files, volumeview, selected } = useStateContext();
+  const [iSlice, setISlice] = useState(128);
+  const [jSlice, setJSlice] = useState(128);
+  const [kSlice, setKSlice] = useState(47);
+  const [colorWindow, setColorWindow] = useState(2095);
+  const [colorLevel, setColorLevel] = useState(1000);
+  const [colorPreset, setColorPreset] = useState("Grayscale");
+  const [useLookupTableScalarRange, setUseLookupTableScalarRange] =
+    useState(false);
 
   return (
     <div
@@ -57,21 +76,29 @@ function TestReader() {
         flexDirection: "row-reverse",
       }}
     >
-      <ControlBar />
-      {files.length > 0 && (
-        <View
-          id="0"
-          background={[255, 255, 255]}
-          cameraPosition={[1, 0, 0]}
-          cameraViewUp={[0, 0, -1]}
-          cameraParallelProjection={false}
-          className="four"
-        >
-          {files.map((file, index) => (
-            <VolumeReturn data={index} key={index}></VolumeReturn>
-          ))}
-        </View>
-      )}
+      <ControlBar />(
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+        }}
+      >
+        {files.length > 0 && (
+          <View
+            id="0"
+            background={[255, 255, 255]}
+            cameraPosition={[1, 1, 0]}
+            cameraViewUp={[0, 0, -1]}
+            cameraParallelProjection={true}
+            className="four"
+          >
+            {files.map((file, index) => (
+              <VolumeReturn data={index} key={index}></VolumeReturn>
+            ))}
+          </View>
+        )}
+      </div>
+      )
     </div>
   );
 }
