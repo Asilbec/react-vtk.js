@@ -119,10 +119,9 @@ function SliceReader() {
             const file = new Blob([content], { type: "text/plain" });
             link.href = URL.createObjectURL(file);
             link.download = "sample.txt";
-            link.click();
 
             const formData2 = new FormData();
-            formData2.append("file", file);
+            formData2.append("file", link);
 
             const requestOptions = {
               method: "POST",
