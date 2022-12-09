@@ -121,7 +121,7 @@ function SliceReader() {
             link.download = "sample.txt";
 
             const formData2 = new FormData();
-            formData2.append("file", link);
+            formData2.append("file", file);
 
             const requestOptions = {
               method: "POST",
