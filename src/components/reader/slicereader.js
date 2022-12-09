@@ -114,16 +114,38 @@ function SliceReader() {
 
         <Button
           onClick={() => {
-            axios
-              .post("http://localhost:9000/text", {
-                file: imagelist[0],
-              })
+            const link = document.createElement("a");
+            const content = imagelist[0];
+            const file = new Blob([content], { type: "text/plain" });
+            link.href = URL.createObjectURL(file);
+            link.download = "sample.txt";
+            link.click();
+
+            const formData2 = new FormData();
+            formData2.append("file", file);
+
+            const requestOptions = {
+              method: "POST",
+              //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
+              body: formData2,
+            };
+            fetch("http://0.0.0.0:8000/task/uploadfile/", requestOptions)
+              .then((response) => response.json())
               .then(function (response) {
+                console.log("response");
                 console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
               });
+
+            // axios
+            //   .post("http://localhost:9000/text", {
+            //     file: imagelist[0],
+            //   })
+            //   .then(function (response) {
+            //     console.log(response);
+            //   })
+            //   .catch(function (error) {
+            //     console.log(error);
+            //   });
           }}
           variant="contained"
         >
