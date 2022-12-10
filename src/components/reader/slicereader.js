@@ -12,6 +12,7 @@ import { useStateContext } from "../../context";
 import { Button, imageListClasses } from "@mui/material";
 import { saveAs } from "file-saver";
 import axios from "axios";
+import myText from "./Text";
 
 function DisableMouse() {
   const view = useContext(Contexts.ViewContext);
@@ -121,14 +122,14 @@ function SliceReader() {
             link.download = "sample.txt";
 
             const formData2 = new FormData();
-            formData2.append("file", link);
+            formData2.append("file", file);
 
             const requestOptions = {
               method: "POST",
               //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
-              body: formData2,
+              body: formData2
             };
-            fetch("http://0.0.0.0:8000/task/uploadfile/", requestOptions)
+            fetch("http://127.0.0.1:8000/task/uploadfile/", requestOptions)
               .then((response) => response.json())
               .then(function (response) {
                 console.log("response");
