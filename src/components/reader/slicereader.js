@@ -127,7 +127,7 @@ function SliceReader() {
             const requestOptions = {
               method: "POST",
               //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
-              body: formData2
+              body: formData2,
             };
             fetch("http://127.0.0.1:8000/task/uploadfile/", requestOptions)
               .then((response) => response.json())
@@ -169,6 +169,25 @@ function SliceReader() {
           min={0}
           step={10}
         ></input>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 300,
+          width: 200,
+          height: 50,
+          position: "absolute",
+          left: 0,
+          right: 0,
+          marginRight: "auto",
+          marginLeft: "auto",
+          bottom: 10,
+          backgroundColor: "black",
+          borderRadius: 10,
+        }}
+      >
+        Results
       </div>
 
       <View
