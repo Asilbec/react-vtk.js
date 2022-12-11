@@ -32,10 +32,11 @@ function DisableMouse() {
 }
 
 function SliceReader() {
-  const { files, selected, selectedCam, updateSelectedCam } = useStateContext();
+  const { files } = useStateContext();
   const jSliceRef = useRef();
+  const [selected, setSelected] = useState(1);
   const [camera, setCamera] = useState([0, -180, 0]);
-  const [iSlice, setISlice] = useState(0);
+  const [iSlice, setISlice] = useState();
   const [jSlice, setJSlice] = useState(0);
   const [kSlice, setKSlice] = useState(0);
   const [colorWindow, setColorWindow] = useState(2095);
@@ -46,7 +47,8 @@ function SliceReader() {
   const [imagelist, setImageList] = useState([]);
 
   function changeCamera(n) {
-    updateSelectedCam(n);
+    setSelected(n);
+    console.log(jSliceRef);
     if (n === 1) {
       setCamera([360, 0, 0]);
     }
@@ -76,25 +78,32 @@ function SliceReader() {
         }}
       >
         <Button
-          variant={selectedCam === 1 ? "contained" : "outlined"}
+          variant={selected === 1 ? "contained" : "outlined"}
           style={{ width: "100%" }}
           onClick={() => changeCamera(1)}
         >
           1
         </Button>
         <Button
-          variant={selectedCam === 2 ? "contained" : "outlined"}
+          variant={selected === 2 ? "contained" : "outlined"}
           style={{ width: "100%" }}
           onClick={() => changeCamera(2)}
         >
           2
         </Button>
         <Button
-          variant={selectedCam === 3 ? "contained" : "outlined"}
+          variant={selected === 3 ? "contained" : "outlined"}
           style={{ width: "100%" }}
           onClick={() => changeCamera(3)}
         >
           3
+        </Button>
+        <Button
+          variant="contained"
+          style={{ width: "100%" }}
+          onClick={() => console.log(imagelist)}
+        >
+          Print Image List
         </Button>
         <Button
           variant="contained"
@@ -150,30 +159,12 @@ function SliceReader() {
             width: "300px",
           }}
           onChange={(e) => {
-            if (selectedCam === 1) {
-              iSlice.current.renderWindow
-                .captureImages([400, 400])[0]
-                .then((image) => {
-                  setISlice(e.target.value);
-                  setImageList((imagelist) => [...imagelist, image]);
-                });
-            }
-            if (selectedCam === 2) {
-              jSlice.current.renderWindow
-                .captureImages([400, 400])[0]
-                .then((image) => {
-                  setJSlice(e.target.value);
-                  setImageList((imagelist) => [...imagelist, image]);
-                });
-            }
-            if (selectedCam === 3) {
-              kSlice.current.renderWindow
-                .captureImages([400, 400])[0]
-                .then((image) => {
-                  setKSlice(e.target.value);
-                  setImageList((imagelist) => [...imagelist, image]);
-                });
-            }
+            jSliceRef.current.renderWindow
+              .captureImages([400, 400])[0]
+              .then((image) => {
+                setJSlice(e.target.value);
+                setImageList((imagelist) => [...imagelist, image]);
+              });
           }}
           type={"range"}
           max={100}
@@ -211,7 +202,7 @@ function SliceReader() {
         ref={jSliceRef}
       >
         <ShareDataSet>
-          <Reader vtkClass="vtkXMLImageDataReader" url={files[selected].uri} />
+          <Reader vtkClass="vtkXMLImageDataReader" url={files[0].uri} />
         </ShareDataSet>
 
         <SliceRepresentation
