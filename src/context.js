@@ -17,6 +17,11 @@ export const StateContext = ({ children }) => {
   const [updated, setupdated] = useState();
   const [volumeview, setvolumeview] = useState(false);
   const [viewAi, setVewAi] = useState(false);
+  const [selectedCam, setSelectedCam] = useState(1);
+
+  const updateSelectedCam = (n) => {
+    setSelectedCam(n);
+  };
 
   const updatefilelist = (list) => {
     setfilenamelist(list);
@@ -84,6 +89,8 @@ export const StateContext = ({ children }) => {
         updateFileNameList,
         updateViewAi,
         viewAi,
+        updateSelectedCam,
+        selectedCam,
       }}
     >
       {children}

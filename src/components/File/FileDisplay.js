@@ -3,7 +3,8 @@ import { useStateContext } from "../../context";
 import { Typography, ListItem, List, Button } from "@mui/material";
 
 function FileDisplay() {
-  const { filenamelist, updateSelected, selected } = useStateContext();
+  const { filenamelist, updateSelected, selected, volumeview } =
+    useStateContext();
 
   return (
     <div style={{ width: "95%", margin: "0 auto" }}>
@@ -28,7 +29,11 @@ function FileDisplay() {
             >
               <Button
                 onClick={() => {
-                  updateSelected(index);
+                  if (volumeview && index === selected) {
+                    console.log("nice");
+                  } else {
+                    updateSelected(index);
+                  }
                 }}
                 sx={{ width: "100%" }}
                 variant={selected === index ? "contained" : "outlined"}

@@ -32,11 +32,10 @@ function DisableMouse() {
 }
 
 function SliceReader() {
-  const { files, selected } = useStateContext();
+  const { files, selected, selectedCam, updateSelectedCam } = useStateContext();
   const jSliceRef = useRef();
-  const [selectedCam, setSelected] = useState(1);
   const [camera, setCamera] = useState([0, -180, 0]);
-  const [iSlice, setISlice] = useState();
+  const [iSlice, setISlice] = useState(0);
   const [jSlice, setJSlice] = useState(0);
   const [kSlice, setKSlice] = useState(0);
   const [colorWindow, setColorWindow] = useState(2095);
@@ -47,8 +46,7 @@ function SliceReader() {
   const [imagelist, setImageList] = useState([]);
 
   function changeCamera(n) {
-    setSelected(n);
-    console.log(jSliceRef);
+    updateSelectedCam(n);
     if (n === 1) {
       setCamera([360, 0, 0]);
     }
@@ -97,13 +95,6 @@ function SliceReader() {
           onClick={() => changeCamera(3)}
         >
           3
-        </Button>
-        <Button
-          variant="contained"
-          style={{ width: "100%" }}
-          onClick={() => console.log(imagelist)}
-        >
-          Print Image List
         </Button>
         <Button
           variant="contained"
@@ -159,12 +150,30 @@ function SliceReader() {
             width: "300px",
           }}
           onChange={(e) => {
-            jSliceRef.current.renderWindow
-              .captureImages([400, 400])[0]
-              .then((image) => {
-                setJSlice(e.target.value);
-                setImageList((imagelist) => [...imagelist, image]);
-              });
+            if (selectedCam === 1) {
+              iSlice.current.renderWindow
+                .captureImages([400, 400])[0]
+                .then((image) => {
+                  setISlice(e.target.value);
+                  setImageList((imagelist) => [...imagelist, image]);
+                });
+            }
+            if (selectedCam === 2) {
+              jSlice.current.renderWindow
+                .captureImages([400, 400])[0]
+                .then((image) => {
+                  setJSlice(e.target.value);
+                  setImageList((imagelist) => [...imagelist, image]);
+                });
+            }
+            if (selectedCam === 3) {
+              kSlice.current.renderWindow
+                .captureImages([400, 400])[0]
+                .then((image) => {
+                  setKSlice(e.target.value);
+                  setImageList((imagelist) => [...imagelist, image]);
+                });
+            }
           }}
           type={"range"}
           max={100}
