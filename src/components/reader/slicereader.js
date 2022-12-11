@@ -45,6 +45,7 @@ function SliceReader() {
   const [useLookupTableScalarRange, setUseLookupTableScalarRange] =
     useState(false);
   const [imagelist, setImageList] = useState([]);
+  const [results,setResults] = useState([[0,0]])
 
   function changeCamera(n) {
     setSelected(n);
@@ -77,34 +78,7 @@ function SliceReader() {
           marginTop: "5px",
         }}
       >
-        <Button
-          variant={selected === 1 ? "contained" : "outlined"}
-          style={{ width: "100%" }}
-          onClick={() => changeCamera(1)}
-        >
-          1
-        </Button>
-        <Button
-          variant={selected === 2 ? "contained" : "outlined"}
-          style={{ width: "100%" }}
-          onClick={() => changeCamera(2)}
-        >
-          2
-        </Button>
-        <Button
-          variant={selected === 3 ? "contained" : "outlined"}
-          style={{ width: "100%" }}
-          onClick={() => changeCamera(3)}
-        >
-          3
-        </Button>
-        <Button
-          variant="contained"
-          style={{ width: "100%" }}
-          onClick={() => console.log(imagelist)}
-        >
-          Print Image List
-        </Button>
+
         <Button
           variant="contained"
           style={{ width: "100%" }}
@@ -116,7 +90,7 @@ function SliceReader() {
         <Button
           onClick={() => {
             const link = document.createElement("a");
-            const content = imagelist[0];
+            const content = imagelist[imagelist.length-1];
             const file = new Blob([content], { type: "text/plain" });
             link.href = URL.createObjectURL(file);
             link.download = "sample.txt";
@@ -130,11 +104,12 @@ function SliceReader() {
               //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
               body: formData2,
             };
-            fetch("http://127.0.0.1:8000/task/uploadfile/", requestOptions)
+            fetch("http://127.0.0.1:8000/classify/", requestOptions)
               .then(function(response) {
                 return response.json();
               }).then(function(data) {
                 console.log(data);
+                setResults(data)
               });
                 
             
@@ -177,7 +152,7 @@ function SliceReader() {
         style={{
           position: "absolute",
           zIndex: 300,
-          width: 200,
+          width: 250,
           height: 50,
           position: "absolute",
           left: 0,
@@ -187,9 +162,16 @@ function SliceReader() {
           bottom: 10,
           backgroundColor: "black",
           borderRadius: 10,
+          display : 'flex',
+          justifyContent :'space-evenly',
+          alignContent : 'center' , 
+          fontSize : 9,
+          color : '#1976d2', 
+          lineHeight : '50px'
         }}
       >
-        Results
+        <h1> Negative :  {(results[0][0]).toFixed(2)}  </h1>      
+        <h1> Positive : {(results[0][1]).toFixed(2)}    </h1> 
       </div>
 
       <View
