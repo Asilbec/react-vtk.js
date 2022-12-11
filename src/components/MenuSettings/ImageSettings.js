@@ -29,17 +29,19 @@ function ImageSettings() {
     volumeview,
   } = useStateContext();
 
-  if (volumeview) {
-    const Visibility = viewref.current[selected].volume.getVisibility();
-  }
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(true);
 
   const [userinput, updateuserinput] = useState();
 
+  function GiveVisStatus() {
+    return viewref.current[selected].volume.getVisibility();
+  }
+
   useEffect(() => {
-    if (volumeview) {
-      newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
-    }
+    const { results, error } = GiveVisStatus;
+    if (error) console.log("this is an error!");
+    console.log(results);
+    newSelectedVolumeVis(results);
   }, [selected]);
 
   // useEffect(() => {
@@ -148,25 +150,29 @@ function ImageSettings() {
         </div>
       )}
 
-      <Typography fontSize={20} color={"#4ba5d6"}>
-        Visibility
-      </Typography>
-      <List>
-        <ListItem>
-          <ListItemIcon>
-            <AiFillEye color="white" />
-          </ListItemIcon>
-          <ListItemText
-            style={{ color: "white" }}
-            id="switch-list-label-bluetooth"
-            primary="Image"
-          />
-          <Switch
-            onChange={() => changeVisibiltiy()}
-            checked={selectedVolumeVis}
-          />
-        </ListItem>
-      </List>
+      {!volumeview && (
+        <div>
+          <Typography fontSize={20} color={"#4ba5d6"}>
+            Visibility
+          </Typography>
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <AiFillEye color="white" />
+              </ListItemIcon>
+              <ListItemText
+                style={{ color: "white" }}
+                id="switch-list-label-bluetooth"
+                primary="Image"
+              />
+              <Switch
+                onChange={() => changeVisibiltiy()}
+                checked={selectedVolumeVis}
+              />
+            </ListItem>
+          </List>
+        </div>
+      )}
 
       {/* <Typography fontSize={20} color={"#4ba5d6"}>
         Scalars

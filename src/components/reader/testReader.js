@@ -81,7 +81,7 @@ function TestReader() {
           height: "100vh",
         }}
       >
-        {(files.length > 0) & !volumeview && (
+        {(files.length > 0) & !volumeview ? (
           <View
             id="0"
             background={[255, 255, 255]}
@@ -94,7 +94,10 @@ function TestReader() {
               <VolumeReturn data={index} key={index}></VolumeReturn>
             ))}
           </View>
+        ) : (
+          <h1></h1>
         )}
+
         {(files.length > 0) & volumeview && <SliceReader />}
       </div>
     </div>

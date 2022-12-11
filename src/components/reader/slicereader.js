@@ -32,9 +32,9 @@ function DisableMouse() {
 }
 
 function SliceReader() {
-  const { files } = useStateContext();
+  const { files, selected } = useStateContext();
   const jSliceRef = useRef();
-  const [selected, setSelected] = useState(1);
+  const [selectedCam, setSelected] = useState(1);
   const [camera, setCamera] = useState([0, -180, 0]);
   const [iSlice, setISlice] = useState();
   const [jSlice, setJSlice] = useState(0);
@@ -78,21 +78,21 @@ function SliceReader() {
         }}
       >
         <Button
-          variant={selected === 1 ? "contained" : "outlined"}
+          variant={selectedCam === 1 ? "contained" : "outlined"}
           style={{ width: "100%" }}
           onClick={() => changeCamera(1)}
         >
           1
         </Button>
         <Button
-          variant={selected === 2 ? "contained" : "outlined"}
+          variant={selectedCam === 2 ? "contained" : "outlined"}
           style={{ width: "100%" }}
           onClick={() => changeCamera(2)}
         >
           2
         </Button>
         <Button
-          variant={selected === 3 ? "contained" : "outlined"}
+          variant={selectedCam === 3 ? "contained" : "outlined"}
           style={{ width: "100%" }}
           onClick={() => changeCamera(3)}
         >
@@ -126,18 +126,18 @@ function SliceReader() {
 
             const requestOptions = {
               method: "POST",
-              
+
               //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
               body: formData2,
             };
             fetch("http://127.0.0.1:8000/task/uploadfile/", requestOptions)
-              .then(function(response) {
+              .then(function (response) {
                 return response.json();
-              }).then(function(data) {
+              })
+              .then(function (data) {
                 console.log(data);
               });
-                
-            
+
             // axios
             //   .post("http://localhost:9000/text", {
             //     file: imagelist[0],
@@ -202,7 +202,7 @@ function SliceReader() {
         ref={jSliceRef}
       >
         <ShareDataSet>
-          <Reader vtkClass="vtkXMLImageDataReader" url={files[0].uri} />
+          <Reader vtkClass="vtkXMLImageDataReader" url={files[selected].uri} />
         </ShareDataSet>
 
         <SliceRepresentation
