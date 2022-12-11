@@ -76,7 +76,7 @@ function TestReader() {
         flexDirection: "row-reverse",
       }}
     >
-      <ControlBar />(
+      <ControlBar />
       <div
         style={{
           width: "100%",
@@ -98,7 +98,6 @@ function TestReader() {
           </View>
         )}
       </div>
-      )
     </div>
   );
 }
