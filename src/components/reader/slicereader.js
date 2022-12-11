@@ -126,16 +126,18 @@ function SliceReader() {
 
             const requestOptions = {
               method: "POST",
+              
               //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
               body: formData2,
             };
             fetch("http://127.0.0.1:8000/task/uploadfile/", requestOptions)
-              .then((response) => response.json())
-              .then(function (response) {
-                console.log("response");
-                console.log(response);
+              .then(function(response) {
+                return response.json();
+              }).then(function(data) {
+                console.log(data);
               });
-
+                
+            
             // axios
             //   .post("http://localhost:9000/text", {
             //     file: imagelist[0],
