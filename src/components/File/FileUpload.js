@@ -13,13 +13,14 @@ function FileDrop() {
 }
 
 function FileUpload() {
-  const { updateFiles } = useStateContext();
+  const { updateFiles, updateFileNameList } = useStateContext();
   function GetUri(file) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       console.log(file.name);
       updateFiles({ uri: reader.result, name: file.name });
+      updateFileNameList(file.name);
     };
     reader.onerror = function () {
       console.log(reader.error);

@@ -23,11 +23,14 @@ function ImageSettings() {
     // updateSelectedMap,
     // volcontref,
     // selectedMap,
+    updateSelected,
     updatefilelist,
     filenamelist,
   } = useStateContext();
   const Visibility = viewref.current[selected].volume.getVisibility();
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
+
+  const [userinput, updateuserinput] = useState();
 
   useEffect(() => {
     newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
@@ -64,6 +67,8 @@ function ImageSettings() {
             display: "grid",
             gridTemplateColumns: "45% 45%",
             justifyContent: "space-around",
+            marginTop: "10px",
+            marginBottom: "10px",
           }}
         >
           <Button
@@ -88,14 +93,16 @@ function ImageSettings() {
               background: "transparent",
               border: "1px solid rgb(25 118 210 / 50%)",
               borderRadius: "3px",
-              marginTop: "10px",
+              marginTop: "20px",
               outline: "none",
               boxSizing: "border-box",
               paddingLeft: "9px",
               fontSize: "15px",
               color: "#1976d2",
             }}
+            onChange={(e) => updateuserinput(e.target.value)}
             type={"text"}
+            defaultValue={filenamelist[selected]}
           ></input>
           <div
             style={{
@@ -117,9 +124,13 @@ function ImageSettings() {
             </Button>
             <Button
               onClick={() => {
-                updatefilelist(selected, "testing");
+                var list = filenamelist;
+                list[selected] = userinput;
+                updatefilelist(list);
+                console.log("name changed");
                 console.log(filenamelist);
                 updaterename(false);
+                updateSelected(selected);
               }}
               variant="outlined"
               color="success"

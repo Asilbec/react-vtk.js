@@ -17,9 +17,7 @@ export const StateContext = ({ children }) => {
   const [updated, setupdated] = useState();
   const [volumeview, setvolumeview] = useState(false);
 
-  const updatefilelist = (index, filename) => {
-    const list = filenamelist;
-    list[index] = filename;
+  const updatefilelist = (list) => {
     setfilenamelist(list);
   };
 
@@ -30,8 +28,11 @@ export const StateContext = ({ children }) => {
 
   const updateFiles = (fileuri, filename) => {
     setNewFiles((files) => [...files, fileuri]);
-    setfilenamelist((filenamelist) => [...filenamelist, filename]);
     setGraphList((graphlist) => [...graphlist, [1, 2, 3]]);
+  };
+
+  const updateFileNameList = (name) => {
+    setfilenamelist((filenamelist) => [...filenamelist, name]);
   };
 
   const updateSelected = (index) => {
@@ -74,6 +75,7 @@ export const StateContext = ({ children }) => {
         updatefilelist,
         updateVolumeView,
         volumeview,
+        updateFileNameList,
       }}
     >
       {children}

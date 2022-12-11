@@ -8,6 +8,7 @@
     flex-direction: column;
     gap: 10px;
     padding-top: 10px;
+    border-left: 1px solid white;
 }
 
 .MenuBarContainerScroll{
