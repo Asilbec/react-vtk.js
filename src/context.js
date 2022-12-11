@@ -16,9 +16,15 @@ export const StateContext = ({ children }) => {
   const [filenamelist, setfilenamelist] = useState([]);
   const [updated, setupdated] = useState();
   const [volumeview, setvolumeview] = useState(false);
+  const [viewAi, setVewAi] = useState(false);
 
   const updatefilelist = (list) => {
     setfilenamelist(list);
+  };
+
+  const updateViewAi = () => {
+    if (viewAi) setVewAi(false);
+    else setVewAi(true);
   };
 
   const updateVolumeView = () => {
@@ -76,6 +82,8 @@ export const StateContext = ({ children }) => {
         updateVolumeView,
         volumeview,
         updateFileNameList,
+        updateViewAi,
+        viewAi,
       }}
     >
       {children}

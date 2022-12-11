@@ -10,6 +10,7 @@ import {
 } from "react-vtk-js";
 import ControlBar from "../File/ControlBar";
 import { useStateContext } from "../../context";
+import SliceReader from "./slicereader";
 
 function VolumeReturn(props) {
   const {
@@ -57,15 +58,12 @@ function VolumeReturn(props) {
 }
 
 function TestReader() {
-  const { files, volumeview, selected } = useStateContext();
-  const [iSlice, setISlice] = useState(128);
-  const [jSlice, setJSlice] = useState(128);
-  const [kSlice, setKSlice] = useState(47);
-  const [colorWindow, setColorWindow] = useState(2095);
-  const [colorLevel, setColorLevel] = useState(1000);
-  const [colorPreset, setColorPreset] = useState("Grayscale");
-  const [useLookupTableScalarRange, setUseLookupTableScalarRange] =
-    useState(false);
+  const { files, volumeview, selected, updateViewAi, ViewAi } =
+    useStateContext();
+
+  useEffect(() => {
+    console.log(volumeview);
+  }, [volumeview]);
 
   return (
     <div
@@ -83,7 +81,7 @@ function TestReader() {
           height: "100vh",
         }}
       >
-        {files.length > 0 && (
+        {(files.length > 0) & !volumeview && (
           <View
             id="0"
             background={[255, 255, 255]}
@@ -97,6 +95,7 @@ function TestReader() {
             ))}
           </View>
         )}
+        {(files.length > 0) & volumeview && <SliceReader />}
       </div>
     </div>
   );

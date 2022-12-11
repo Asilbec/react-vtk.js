@@ -7,7 +7,7 @@ function Layout() {
   const { volumeview } = useStateContext();
   return (
     <div className="layout">
-      {!volumeview ? <TestReader /> : <SliceReader />}
+      <TestReader />
     </div>
   );
 }

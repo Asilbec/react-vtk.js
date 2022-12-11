@@ -26,14 +26,20 @@ function ImageSettings() {
     updateSelected,
     updatefilelist,
     filenamelist,
+    volumeview,
   } = useStateContext();
-  const Visibility = viewref.current[selected].volume.getVisibility();
-  const [selectedVolumeVis, newSelectedVolumeVis] = useState(Visibility);
+
+  if (volumeview) {
+    const Visibility = viewref.current[selected].volume.getVisibility();
+  }
+  const [selectedVolumeVis, newSelectedVolumeVis] = useState(true);
 
   const [userinput, updateuserinput] = useState();
 
   useEffect(() => {
-    newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
+    if (volumeview) {
+      newSelectedVolumeVis(viewref.current[selected].volume.getVisibility());
+    }
   }, [selected]);
 
   // useEffect(() => {

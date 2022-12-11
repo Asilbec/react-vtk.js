@@ -6,7 +6,8 @@ import ImageSettings from "../MenuSettings/ImageSettings";
 import { useStateContext } from "../../context";
 function ControlBar() {
   const [ControlBarWidth, setControlBarWidth] = useState(true);
-  const { selected, updateVolumeView } = useStateContext();
+  const { selected, updateVolumeView, volumeview, updateViewAi } =
+    useStateContext();
 
   return ControlBarWidth ? (
     <div id="menbarContainer" className="MenuBarContainer">
@@ -21,13 +22,20 @@ function ControlBar() {
       </Button>
       <FileUpload />
       <FileDisplay />
-      <Button
-        onClick={() => updateVolumeView()}
-        variant="contained"
-        style={{ width: "95%", margin: "0 auto" }}
-      >
-        Change View
-      </Button>
+      {selected != null ? (
+        <Button
+          onClick={() => {
+            updateVolumeView();
+          }}
+          variant="contained"
+          style={{ width: "95%", margin: "0 auto" }}
+        >
+          {volumeview ? "on " : "off"}
+        </Button>
+      ) : (
+        <></>
+      )}
+
       {selected !== null ? <ImageSettings /> : <div></div>}
     </div>
   ) : (
