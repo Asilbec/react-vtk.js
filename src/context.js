@@ -18,6 +18,21 @@ export const StateContext = ({ children }) => {
   const [volumeview, setvolumeview] = useState(false);
   const [viewAi, setVewAi] = useState(false);
   const [selectedCam, setSelectedCam] = useState(1);
+  const [colorWindow, setColorWindow] = useState(2095);
+  const [colorLevel, setColorLevel] = useState(1000);
+  const [colorPreset, setColorPreset] = useState("Grayscale");
+
+  const updateColorWindow = (n) => {
+    setColorWindow(n);
+  };
+
+  const updateColorLevel = (n) => {
+    setColorLevel(n);
+  };
+
+  const updateColorPreset = (n) => {
+    setColorPreset(n);
+  };
 
   const updateSelectedCam = (n) => {
     setSelectedCam(n);
@@ -91,6 +106,12 @@ export const StateContext = ({ children }) => {
         viewAi,
         updateSelectedCam,
         selectedCam,
+        updateColorWindow,
+        updateColorLevel,
+        updateColorPreset,
+        colorLevel,
+        colorPreset,
+        colorWindow,
       }}
     >
       {children}

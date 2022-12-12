@@ -32,37 +32,18 @@ function DisableMouse() {
 }
 
 function SliceReader() {
-  const { files } = useStateContext();
+  const { files, selected, colorLevel, colorWindow, colorPreset } =
+    useStateContext();
   const jSliceRef = useRef();
-  const [selected, setSelected] = useState(1);
   const [camera, setCamera] = useState([0, -180, 0]);
   const [iSlice, setISlice] = useState();
   const [jSlice, setJSlice] = useState(0);
   const [kSlice, setKSlice] = useState(0);
-  const [colorWindow, setColorWindow] = useState(2095);
-  const [colorLevel, setColorLevel] = useState(1000);
-  const [colorPreset, setColorPreset] = useState("Grayscale");
+
   const [useLookupTableScalarRange, setUseLookupTableScalarRange] =
     useState(false);
   const [imagelist, setImageList] = useState([]);
   const [results, setResults] = useState([[0, 0]]);
-
-  function changeCamera(n) {
-    setSelected(n);
-    console.log(jSliceRef);
-    if (n === 1) {
-      setCamera([360, 0, 0]);
-    }
-    if (n === 2) {
-      setCamera([0, -180, 0]);
-    }
-    if (n === 3) {
-      setCamera([0, 0, 1]);
-    }
-  }
-  function printthings() {
-    console.log(jSliceRef.current.axesActor.getBounds());
-  }
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
@@ -183,38 +164,11 @@ function SliceReader() {
         ref={jSliceRef}
       >
         <ShareDataSet>
-          <Reader vtkClass="vtkXMLImageDataReader" url={files[0].uri} />
+          <Reader vtkClass="vtkXMLImageDataReader" url={files[selected].uri} />
         </ShareDataSet>
 
         <SliceRepresentation
-          iSlice={iSlice}
-          property={{
-            colorWindow,
-            colorLevel,
-            useLookupTableScalarRange,
-          }}
-          cameraParallelProjection={false}
-          colorMapPreset={colorPreset}
-        >
-          <ShareDataSet />
-          <DisableMouse />
-        </SliceRepresentation>
-
-        <SliceRepresentation
           jSlice={jSlice}
-          property={{
-            colorWindow,
-            colorLevel,
-            useLookupTableScalarRange,
-          }}
-          cameraParallelProjection={false}
-          colorMapPreset={colorPreset}
-        >
-          <ShareDataSet />
-          <DisableMouse />
-        </SliceRepresentation>
-        <SliceRepresentation
-          kSlice={kSlice}
           property={{
             colorWindow,
             colorLevel,

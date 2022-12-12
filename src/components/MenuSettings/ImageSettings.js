@@ -9,11 +9,14 @@ import {
   Select,
   MenuItem,
   TextField,
+  Slider,
+  FormControl,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useStateContext } from "../../context";
 import "./MenuSettings.css";
 import { AiFillEye } from "react-icons/ai";
+import vtkColorMaps from "@kitware/vtk.js/Rendering/Core/ColorTransferFunction/ColorMaps.js";
 
 function ImageSettings() {
   const {
@@ -27,6 +30,9 @@ function ImageSettings() {
     updatefilelist,
     filenamelist,
     volumeview,
+    updateColorWindow,
+    updateColorLevel,
+    updateColorPreset,
   } = useStateContext();
 
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(true);
@@ -169,6 +175,73 @@ function ImageSettings() {
                 onChange={() => changeVisibiltiy()}
                 checked={selectedVolumeVis}
               />
+            </ListItem>
+          </List>
+        </div>
+      )}
+
+      {volumeview && (
+        <div>
+          <Typography fontSize={20} color={"#4ba5d6"}>
+            Slice Settings
+          </Typography>
+
+          <List>
+            <ListItem>
+              <ListItemText
+                style={{ color: "white" }}
+                id="switch-list-label-bluetooth"
+                primary="Color Level"
+              />
+              <Slider
+                defaultValue={2095}
+                max={4095}
+                size="small"
+                aria-label="default"
+                valueLabelDisplay="auto"
+                onChange={(e) => updateColorLevel(e.target.value)}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                style={{ color: "white" }}
+                id="switch-list-label-bluetooth"
+                primary="Color Window"
+              />
+              <Slider
+                defaultValue={2095}
+                max={4095}
+                size="small"
+                aria-label="default"
+                valueLabelDisplay="auto"
+                onChange={(e) => updateColorWindow(e.target.value)}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                style={{ color: "white" }}
+                id="switch-list-label-bluetooth"
+                primary="Color Window"
+              />
+              <FormControl fullWidth>
+                <Select
+                  defaultValue={32}
+                  style={{ color: "#1976d2", border: "1px solid #1976d2" }}
+                  onChange={(e) =>
+                    updateColorPreset(
+                      vtkColorMaps.rgbPresetNames[e.target.value]
+                    )
+                  }
+                >
+                  {vtkColorMaps.rgbPresetNames.map((index, item) => (
+                    <MenuItem key={index} value={item}>
+                      {index}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </ListItem>
           </List>
         </div>
