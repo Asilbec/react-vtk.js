@@ -50,9 +50,14 @@ function SliceReader() {
   function changeCamera(n) {
     setSelected(n);
     console.log(jSliceRef);
-
+    if (n === 1) {
+      setCamera([360, 0, 0]);
+    }
     if (n === 2) {
       setCamera([0, -180, 0]);
+    }
+    if (n === 3) {
+      setCamera([0, 0, 1]);
     }
   }
   function printthings() {
@@ -73,34 +78,6 @@ function SliceReader() {
           marginTop: "5px",
         }}
       >
-        <Button
-          variant={selected === 1 ? "contained" : "outlined"}
-          style={{ width: "100%" }}
-          onClick={() => changeCamera(1)}
-        >
-          1
-        </Button>
-        <Button
-          variant={selected === 2 ? "contained" : "outlined"}
-          style={{ width: "100%" }}
-          onClick={() => changeCamera(2)}
-        >
-          2
-        </Button>
-        <Button
-          variant={selected === 3 ? "contained" : "outlined"}
-          style={{ width: "100%" }}
-          onClick={() => changeCamera(3)}
-        >
-          3
-        </Button>
-        <Button
-          variant="contained"
-          style={{ width: "100%" }}
-          onClick={() => console.log(imagelist)}
-        >
-          Print Image List
-        </Button>
         <Button
           variant="contained"
           style={{ width: "100%" }}
@@ -126,7 +103,7 @@ function SliceReader() {
               //headers: { 'Content-Type': 'multipart/form-data' }, // DO NOT INCLUDE HEADERS
               body: formData2,
             };
-            fetch("http://127.0.0.1:8000/task/uploadfile/", requestOptions)
+            fetch("http://127.0.0.1:8000/classify/", requestOptions)
               .then(function (response) {
                 return response.json();
               })
@@ -150,25 +127,24 @@ function SliceReader() {
         >
           SAVE
         </Button>
-        <div style={{ width: "600px", display: "flex" }}>
-          <input
-            style={{
-              width: "400px",
-            }}
-            onChange={(e) => {
-              jSliceRef.current.renderWindow
-                .captureImages([400, 400])[0]
-                .then((image) => {
-                  setJSlice(e.target.value);
-                  setImageList((imagelist) => [...imagelist, image]);
-                });
-            }}
-            type={"range"}
-            max={260}
-            min={0}
-            step={1}
-          ></input>
-        </div>
+
+        <input
+          style={{
+            width: "300px",
+          }}
+          onChange={(e) => {
+            jSliceRef.current.renderWindow
+              .captureImages([400, 400])[0]
+              .then((image) => {
+                setJSlice(e.target.value);
+                setImageList((imagelist) => [...imagelist, image]);
+              });
+          }}
+          type={"range"}
+          max={100}
+          min={0}
+          step={10}
+        ></input>
       </div>
 
       <div
