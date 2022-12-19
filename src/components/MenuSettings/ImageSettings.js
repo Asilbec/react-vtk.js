@@ -33,6 +33,7 @@ function ImageSettings() {
     updateColorWindow,
     updateColorLevel,
     updateColorPreset,
+    volcontref,
   } = useStateContext();
 
   const [selectedVolumeVis, newSelectedVolumeVis] = useState(true);
@@ -71,6 +72,14 @@ function ImageSettings() {
 
   return (
     <div className="ImageSettings">
+      <Button
+        onClick={() =>
+          console.log(volcontref.current[0].controller.getExpanded())
+        }
+      >
+        Print volcontref
+      </Button>
+
       <Typography fontSize={20} color={"#4ba5d6"}>
         File
       </Typography>

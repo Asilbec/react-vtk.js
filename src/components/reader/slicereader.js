@@ -68,6 +68,14 @@ function SliceReader() {
         </Button>
 
         <Button
+          variant="contained"
+          style={{ width: "100%" }}
+          onClick={() => console.log(jSliceRef.current.renderWindow)}
+        >
+          print
+        </Button>
+
+        <Button
           onClick={() => {
             const link = document.createElement("a");
             const content = imagelist[imagelist.length - 1];
@@ -114,17 +122,19 @@ function SliceReader() {
             width: "300px",
           }}
           onChange={(e) => {
-            jSliceRef.current.renderWindow
-              .captureImages([400, 400])[0]
-              .then((image) => {
-                setJSlice(e.target.value);
-                setImageList((imagelist) => [...imagelist, image]);
-              });
+            // jSliceRef.current.renderWindow
+            //   .captureImages([400, 400])[0]
+            //   .then((image) => {
+            //     setJSlice(e.target.value);
+            //     setImageList((imagelist) => [...imagelist, image]);
+            //   });
+            console.log(e.target.value);
+            setJSlice(e.target.value);
           }}
           type={"range"}
-          max={100}
+          max={275}
           min={0}
-          step={10}
+          step={0.01}
         ></input>
       </div>
 
