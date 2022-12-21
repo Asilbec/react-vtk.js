@@ -36,9 +36,7 @@ function SliceReader() {
     useStateContext();
   const jSliceRef = useRef();
   const [camera, setCamera] = useState([0, -180, 0]);
-  const [iSlice, setISlice] = useState();
   const [jSlice, setJSlice] = useState(0);
-  const [kSlice, setKSlice] = useState(0);
 
   const [useLookupTableScalarRange, setUseLookupTableScalarRange] =
     useState(false);

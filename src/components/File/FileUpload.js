@@ -14,6 +14,7 @@ function FileDrop() {
 
 function FileUpload() {
   const { updateFiles, updateFileNameList } = useStateContext();
+
   function GetUri(file) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -25,7 +26,11 @@ function FileUpload() {
     reader.onerror = function () {
       console.log(reader.error);
     };
+    let formData = new formData();
+    formData.append("file", file);
+    fetch("/upload/image", { method: "POST", body: formData });
   }
+
   return (
     <div>
       <FileUploader
